@@ -1,13 +1,15 @@
 /*-------------------------------- Constants --------------------------------*/
 
+// import list of words
 
+const allowedChars = ""
 
 /*---------------------------- Variables (state) ----------------------------*/
 
 let answer, guess, currentRow, currentCol
 
 
-const board = [] // SOURCE  OF TRUTH!
+
 
 /*------------------------ Cached Element References ------------------------*/
 
@@ -28,9 +30,9 @@ const rowEls = document.querySelectorAll('.row')
 
 // document.querySelector('body').addEventListener('keydown',(evt) =>{console.log(evt.key);})
 
-document.querySelector('body').addEventListener('keydown', placeLetter)
+document.querySelector('body').addEventListener('keydown', typeLetter)
 
-keyboardEl.addEventListener('click', testKeys)
+keyboardEl.addEventListener('click', useKeys)
 
 /*-------------------------------- Functions --------------------------------*/
 
@@ -42,28 +44,24 @@ console.log(rowEls[0].children[0]);
 rowEls[0].children[0].textContent = 'A'
 rowEls[1].children[2].textContent = 'B'
 
+currentRow = 4
+currentCol = 0
 
-currentRow = 3
-currentCol = 4
+// rowEls[currentRow].children[currentCol].textContent = 'C'
 
-rowEls[currentRow].children[currentCol].textContent = 'C'
-
-// DELETE, testing
-// function submit(){
-//   console.log(inputEl.value);
-// }
-
-function testKeys(evt){
+function useKeys(evt){
   // console.log(evt.target.id);
-  rowEls[1].children[1].textContent = evt.target.id
-
+  if (currentCol === 5) return
+  rowEls[currentRow].children[currentCol].textContent = evt.target.id
+  currentCol++
 }
 
-function placeLetter(evt){
-  console.log(evt.key);
-  rowEls[0].children[2].textContent = evt.key.toUpperCase()
-  // make each index of the guess the value(?) of the corresponding square
-  // how do we handle going down rows?
+function typeLetter(evt){
+  if (evt.which < 65 || evt.which > 90) return
+  if (currentCol === 5) return
+  // console.log(evt.key);
+  rowEls[currentRow].children[currentCol].textContent = evt.key.toUpperCase()
+  currentCol++
 }
 
 
