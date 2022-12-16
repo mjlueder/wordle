@@ -50,8 +50,10 @@ currentCol = 0
 // rowEls[currentRow].children[currentCol].textContent = 'C'
 
 function useKeys(evt){
-  // console.log(evt.target.id);
   if (currentCol === 5) return
+
+  if (evt.target.id === 'enter' || evt.target.id === 'delete' || evt.target.id === '') return
+
   rowEls[currentRow].children[currentCol].textContent = evt.target.id
   currentCol++
 }
