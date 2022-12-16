@@ -2,22 +2,18 @@
 
 import { getWord } from "./words.js"
 import { checkWord } from "./words.js"
-// import list of words
 
-const allowedChars = ""
+// console.log(getWord(1));
 
 /*---------------------------- Variables (state) ----------------------------*/
 
 let answer, guess, currentRow, currentCol
 
-// console.log(checkWord);
+let guessArr = []
 
 
 /*------------------------ Cached Element References ------------------------*/
 
-// const inputEl = document.querySelector('input')
-
-// const submitBtnEl = document.getElementById('submit-btn')
 
 const boardEl = document.querySelector('.board')
 
@@ -38,23 +34,24 @@ keyboardEl.addEventListener('click', useKeys)
 
 /*-------------------------------- Functions --------------------------------*/
 
-console.log(rowEls)
-console.log(rowEls[0]);
-console.log(rowEls[0].children);
-console.log(rowEls[0].children[0]);
+// console.log(rowEls)
+// console.log(rowEls[0]);
+// console.log(rowEls[0].children);
+// console.log(rowEls[0].children[0]);
 
-rowEls[0].children[0].textContent = 'A'
-rowEls[1].children[2].textContent = 'B'
+// rowEls[0].children[0].textContent = 'A'
+// rowEls[1].children[2].textContent = 'B'
 
 currentRow = 4
 currentCol = 0
 
 // rowEls[currentRow].children[currentCol].textContent = 'C'
 
-let guessArr = []
-
 function useKeys(evt){
   // below: add exception for enter key (if currentCol === 5 && evt.target.id = 'enter')
+  if (currentCol === 5 && evt.target.id === 'enter') {
+    handleGuess(guessArr)
+  }
   if (evt.target.id === 'delete'){
     if (currentCol === 0) return
     currentCol--
@@ -76,6 +73,10 @@ function typeLetter(evt){
   // add delete & enter .which values
   // return evt.which = 13
   // delete evt.which = 8
+  if (currentCol === 5 && evt.which === 13) {
+    handleGuess(guessArr)
+    return
+  }
   if (evt.which === 8){
     if (currentCol === 0) return
     currentCol--
@@ -103,16 +104,19 @@ function init(){
   render()
 }
 
-function getRandomWord(){
+//getWord
 
-}
+//checkWord  ** make guess lowercase **
 
-function handleGuess(){
-  checkGuess() 
+
+function handleGuess(guessArr){
+  //checkWord
+  console.log('handle guess is being called');
+
 }
 
 function checkGuess(){
-  // check word length
+  //// check word length
   // check for letter characters only
   // change guess to lower or upper case
   // compare guess to list of approved words
@@ -129,13 +133,6 @@ function compareGuess(){
 function updateBoard(){
 
 }
-
-
-
-
-
-
-
 
 function colorBoard(){
   
