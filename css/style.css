@@ -12,6 +12,11 @@ body {
   background-color: cornflowerblue;
 }
 
+h1 {
+  font-size: 9vmin;
+  margin: 3vmin;
+}
+
 .content {
   display: flex;
   background-size: cover; 
@@ -20,22 +25,33 @@ body {
   justify-content: center; 
 }
 
-.row {
-  display: flex;
-}
+/* .board {
+  display: grid;
+  grid-template-rows: repeat(6, 9vmin);
+  grid-template-columns: repeat(5, 9vmin);
+  border: 1px solid black; 
+}*/
 
-.board .tile {
-  height: 50px;
-  width: 50px;
+
+.row div {
   border: 1px solid black;
 }
+
+
+.board .row {
+  display: grid;
+  grid-template-rows: repeat(1, 10vmin);
+  grid-template-columns: repeat(5, 10vmin);
+}
+
 
 section.keyboard {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 32px;
+  margin: 3vmin;
+  font-size: 3vmin;
 }
 
 .keyboard div {
@@ -43,8 +59,8 @@ section.keyboard {
 }
 
 .letter {
-  width: 30px;
-  height: 30px;
+  width: 6vmin;
+  height: 6vmin;
   border: 1px solid black;
   display: flex;
   justify-content: center;
@@ -53,13 +69,13 @@ section.keyboard {
 
 #enter, #delete {
   border: 1px solid black;
-  height: 30px;
-  width: 60px;
+  height: 6vmin;
+  width: 12vmin;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-#submit-btn {
-  margin-bottom: 32px;
-}
+/* .row:nth-child(1) :nth-child(1){
+  background-color: gray;
+} */
