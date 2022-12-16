@@ -1,5 +1,7 @@
 /*-------------------------------- Constants --------------------------------*/
 
+import { getWord } from "./words.js"
+import { checkWord } from "./words.js"
 // import list of words
 
 const allowedChars = ""
@@ -8,7 +10,7 @@ const allowedChars = ""
 
 let answer, guess, currentRow, currentCol
 
-
+// console.log(checkWord);
 
 
 /*------------------------ Cached Element References ------------------------*/
@@ -49,27 +51,54 @@ currentCol = 0
 
 // rowEls[currentRow].children[currentCol].textContent = 'C'
 
+let guessArr = []
+
 function useKeys(evt){
+  // below: add exception for enter key (if currentCol === 5 && evt.target.id = 'enter')
+  if (evt.target.id === 'delete'){
+    if (currentCol === 0) return
+    currentCol--
+    rowEls[currentRow].children[currentCol].textContent = ''
+    guessArr.pop()
+    console.log(guessArr);
+    return
+  }
   if (currentCol === 5) return
 
-  if (evt.target.id === 'enter' || evt.target.id === 'delete' || evt.target.id === '') return
-
+  if (evt.target.id === 'enter' || evt.target.id === '') return
   rowEls[currentRow].children[currentCol].textContent = evt.target.id
   currentCol++
+  guessArr.push(evt.target.id)
+  console.log(guessArr);
 }
 
 function typeLetter(evt){
+  // add delete & enter .which values
+  // return evt.which = 13
+  // delete evt.which = 8
+  if (evt.which === 8){
+    if (currentCol === 0) return
+    currentCol--
+    rowEls[currentRow].children[currentCol].textContent = ''
+    guessArr.pop()
+    console.log(guessArr);
+    return
+  }
   if (evt.which < 65 || evt.which > 90) return
+  // below: add exception for enter key (if currentCol === 5 && evt.key = 'enter')
   if (currentCol === 5) return
   // console.log(evt.key);
   rowEls[currentRow].children[currentCol].textContent = evt.key.toUpperCase()
   currentCol++
+  guessArr.push(evt.key)
+  console.log(guessArr);
 }
 
 
 function init(){
   currentRow = 0
   currentCol = 0
+  guessArr = []
   // clear board letters & styling
   render()
 }
