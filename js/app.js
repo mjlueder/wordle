@@ -53,7 +53,7 @@ function init(){
   currentCol = 0
   guessArr = []
   answer = getWord(1)
-  // aArr = answer.split('')
+  aArr = answer.split('')
   // clear board letters & styling
   render()
   console.log('row ', currentRow)
@@ -66,6 +66,7 @@ function useKeys(evt){
   // below: add exception for enter key (if currentCol === 5 && evt.target.id = 'enter')
   if (currentCol === 5 && evt.target.id === 'enter') {
     handleGuess(guessArr)
+    return
   }
   if (evt.target.id === 'delete'){
     if (currentCol === 0) return
@@ -78,7 +79,7 @@ function useKeys(evt){
   if (currentCol === 5) return
   // add animation?
   if (evt.target.id === 'enter' || evt.target.id === '') return
-  rowEls[currentRow].children[currentCol].textContent = evt.target.id
+  rowEls[currentRow].children[currentCol].textContent = evt.target.id.toUpperCase()
   currentCol++
   guessArr.push(evt.target.id)
   console.log(guessArr);
@@ -107,7 +108,7 @@ function typeLetter(evt){
   rowEls[currentRow].children[currentCol].textContent = evt.key.toUpperCase()
   currentCol++
   guessArr.push(evt.key)
-  console.log(guessArr);
+  // console.log(guessArr);
 }
 
 
@@ -124,13 +125,13 @@ function handleGuess(guessArr){
   guess = guessArr.join('').toLowerCase()
   if (checkWord(guess)=== false) {
     rejectGuess()
-  }
-  // add rejection message/animation
-  else if (guess === answer) {
-    console.log('win!');
-    console.log(rowEls[currentRow]);
-    rowEls[currentRow].classList.add("right")
-    //add win animation etc
+  // }
+  // // add rejection message/animation
+  // else if (guess === answer) {
+  //   console.log('win!');
+  //   console.log(rowEls[currentRow]);
+  //   rowEls[currentRow].classList.add("right")
+  //   //add win animation etc
   } else {
     compareLetters(guess, answer)
   }
@@ -143,21 +144,32 @@ function rejectGuess(){
 function compareLetters(guess, answer){
   console.log('compareLetters');
   let gArr = guess.split('')
-  aArr = answer.split('')
+  let copyAArr = answer.split('')
   // console.log(gArr, aArr);
   // compares guess and answer letters. removes letter from answer array, changes tile to green
   for (let i = 0; i < gArr.length; i++){
-    if (gArr[i] === aArr[i]) {
-      console.log(`match at ${i}!`);
+    if (gArr[i] === copyAArr[i]) {
+      // console.log(`match at ${i}!`);
       // console.log(aArr);
       rowEls[currentRow].children[i].classList.add("right")
+
       let x = rowEls[currentRow].children[i].textContent.toLowerCase()
       console.log(x);
       document.getElementById(x).classList.add("right")
+
       aArr[i] = 0
-      console.log(aArr);
+      console.log(aArr)
+      console.log(copyAArr);
     }
   }
+
+  if (guess === answer) {
+    console.log('win!');
+    // console.log(rowEls[currentRow]);
+    // rowEls[currentRow].classList.add("right")
+  }
+
+
 
   currentRow++
   currentCol = 0
