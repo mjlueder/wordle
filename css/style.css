@@ -10,12 +10,12 @@ html {
 
 :root{
   /* --body-bg: #8FC1E3; */
-  --border: 1px solid #403874;
+  --border: 1px solid #2f2f34;
   --bg: #5085a5;
   /* --txt: #687864; */
 }
 body {
-  background-color: #1f0937
+  background: linear-gradient(to top, #09203f 0%, #537895 100%);
 }
 
 h1 {
@@ -58,11 +58,11 @@ h3 {
 }
 
 .board {
-  background-color: #91a3f5;
+  background-color: #afb1b7;
   font-family: sans-serif;
-  border: 3px solid #403874;
+  border: 3px solid #262629;
   border-radius: 4px;
-  color: rgb(33, 18, 68);
+  color: rgb(37, 36, 41);
 }
 
 .board .row {
@@ -83,12 +83,12 @@ section.keyboard {
 }
 
 .letter {
-  background-color: #91a3f5;
+  background-color: #a4a5a6;
 }
 
 .keyboard div {
   display: flex;
-  color: #261c4e;
+  color: #08070e;
   border-radius: 2px;
 }
 
@@ -111,9 +111,9 @@ section.keyboard {
 }
 
 .right {
-  background-color: rgb(65, 177, 46);
+  background-color: rgb(78, 174, 61);
 }
 
 .almost-right {
-  background-color: rgb(237, 237, 64);
+  background-color: rgb(231, 231, 29);
 }
