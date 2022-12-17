@@ -64,6 +64,7 @@ function init(){
 function useKeys(evt){
   if (win === false ) messageEl.textContent = ''
   if (win === true) return
+
   if (currentCol === 5 && evt.target.id === 'enter') {
     handleGuess()
   }
@@ -91,7 +92,6 @@ function useKeys(evt){
 function typeLetter(evt){
   if (win === false ) messageEl.textContent = ''
   if (win === true) return
-  // add delete & enter .which values
   // return evt.which = 13
   // delete evt.which = 8
   if (currentCol === 5 && evt.which === 13) {
@@ -141,8 +141,6 @@ function compareLetters(guess, answer){
   // compares guess and answer letters. removes letter from answer array, changes tile to green
   for (let i = 0; i < gArr.length; i++){
     if (gArr[i] === copyAArr[i]) {
-      // console.log(`match at ${i}!`);
-      // console.log(aArr);
       rowEls[currentRow].children[i].classList.add("right")
 
       let x = rowEls[currentRow].children[i].textContent.toLowerCase()
@@ -150,31 +148,62 @@ function compareLetters(guess, answer){
       document.getElementById(x).classList.add("right")
 
       aArr[i] = 0
-      console.log(aArr)
-      console.log(copyAArr);
+      gArr[i] = 0
+      // console.log(aArr)
+      // console.log(copyAArr);
+      // console.log(gArr);
     }
   }
 
+  for (let i = 0; i < gArr.length; i++){
+    console.log('start G ',gArr);
+    console.log('start A ',aArr);
+    let idx = copyAArr.findIndex(function(el){
+      console.log('el ',el);
+      console.log('gArr[i] ',gArr[i]);
+
+      return (el !== 0 && el === gArr[i])
+    })
+    console.log('idx ',idx);
+    if (idx !== -1) {
+      copyAArr[idx] = 0
+      console.log('end A ',copyAArr);
+
+      rowEls[currentRow].children[i].classList.add("almost-right")
+
+      let x = rowEls[currentRow].children[i].textContent.toLowerCase()
+      console.log(x);
+      document.getElementById(x).classList.add("almost-right")
+    }
+  }
+
+
+
   // rowEls[currentRow].children[0].classList.add('animate__animated', 'animate__flipInX')
 
+  checkWin()
+  checkLoss()
+  
+  currentRow++
+  currentCol = 0
+  guessArr = []
+}
+
+function checkWin(){
   if (guess === answer) {
     console.log('win!');
     messageEl.textContent = 'You win!'
     win = true
     return
   }
+}
 
+function checkLoss(){
   if (currentRow === 5) {
     messageEl.textContent = `The answer was ${answer.toUpperCase()}`
     return
   }
-
-  currentRow++
-  currentCol = 0
-  guessArr = []
 }
-
-
 
 function render(){
 
