@@ -42,10 +42,23 @@ keyboardEl.addEventListener('click', useKeys)
 // rowEls[0].children[0].textContent = 'A'
 // rowEls[1].children[2].textContent = 'B'
 
-currentRow = 4
-currentCol = 0
-
 // rowEls[currentRow].children[currentCol].textContent = 'C'
+
+
+init()
+
+function init(){
+  currentRow = 0
+  currentCol = 0
+  guessArr = []
+  answer = getWord(1)
+  // clear board letters & styling
+  render()
+  console.log('row ', currentRow)
+  console.log('col ', currentCol)
+  console.log('guessArr ', guessArr)
+  console.log(answer);
+}
 
 function useKeys(evt){
   // below: add exception for enter key (if currentCol === 5 && evt.target.id = 'enter')
@@ -61,7 +74,7 @@ function useKeys(evt){
     return
   }
   if (currentCol === 5) return
-
+  // add animation?
   if (evt.target.id === 'enter' || evt.target.id === '') return
   rowEls[currentRow].children[currentCol].textContent = evt.target.id
   currentCol++
@@ -96,13 +109,7 @@ function typeLetter(evt){
 }
 
 
-function init(){
-  currentRow = 0
-  currentCol = 0
-  guessArr = []
-  // clear board letters & styling
-  render()
-}
+
 
 //getWord
 
@@ -112,22 +119,39 @@ function init(){
 function handleGuess(guessArr){
   //checkWord
   console.log('handle guess is being called');
-
+  guess = guessArr.join('').toLowerCase()
+  console.log(guess);
+  if (checkWord(guess)=== false) {
+    rejectGuess()
+  }
+  // add rejection message/animation
+  else if (guess === answer) {
+    console.log('win!');
+    //add win animation etc
+  } else {
+    compareLetters(guess, answer)
+  }
 }
 
-function checkGuess(){
-  //// check word length
-  // check for letter characters only
-  // change guess to lower or upper case
-  // compare guess to list of approved words
-  // reject if guess is not a word, if it is too long, or if it has non-letters
-  // if it is an acceptable word, compare guess to answer
+function rejectGuess(){
+  // keep function ?
 }
 
-function compareGuess(){
-  // split guess into an array
-  // compare each index
-  // how to handle this information? 
+function compareLetters(guess, answer){
+  console.log(guess[0]);
+  for (let i = 0; i < guess.length; i++){
+    if (guess[i] === answer[i]) {
+      console.log(`match at ${i}!`);
+      rowEls[currentRow].children[i].classList.add("right")
+      // changes div color to green when letter is right
+      let x = rowEls[currentRow].children[i].textContent.toLowerCase()
+      console.log(x);
+      document.getElementById(x).classList.add("right")
+    }
+  }
+  currentRow++
+  currentCol = 0
+  guessArr = []
 }
 
 function updateBoard(){
@@ -140,10 +164,6 @@ function colorBoard(){
 
 function colorKeyboard(){
 
-}
-
-function checkForWin(){
-  // if guess === answer, animation, win message?
 }
 
 function checkForLoss(){

@@ -46,6 +46,7 @@ h1 {
   display: grid;
   grid-template-rows: repeat(1, 10vmin);
   grid-template-columns: repeat(5, 10vmin);
+  background-color: gray;
 }
 
 
@@ -80,6 +81,6 @@ section.keyboard {
   align-items: center;
 }
 
-/* .row:nth-child(1) :nth-child(1){
-  background-color: gray;
-} */
+.right {
+  background-color: green;
+}
