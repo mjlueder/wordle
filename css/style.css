@@ -8,18 +8,29 @@ html {
   box-sizing: inherit;
 }
 
+:root{
+  /* --body-bg: #8FC1E3; */
+  --border: 1px solid #31708E;
+  --bg: #5085a5;
+  /* --txt: #687864; */
+}
 body {
-  background-color: cornflowerblue;
+  background-color: var(--bg);
 }
 
 h1 {
   font-size: 9vmin;
   margin: 0;
+  color: #F7F9FB;
+  text-shadow: 2px 2px #434961;
 }
 
 h3 {
-  height: 30px;
-  margin: 8px 0 0 0;
+  height: 5vmin;
+  font-size: 4vmin;
+  margin: 1vmin 0 0 0;
+  color: #F7F9FB;
+  text-shadow: 1px 1px #434961;
 }
 
 .content {
@@ -39,7 +50,7 @@ h3 {
 
 
 .row div {
-  border: 1px solid black;
+  border: var(--border);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -47,7 +58,11 @@ h3 {
 }
 
 .board {
-  background-color: rgb(146, 145, 145);
+  background-color: #8FC1E3;
+  font-family: sans-serif;
+  border: 3px solid #2f3446;
+  border-radius: 4px;
+  color: rgb(57, 64, 61);
 }
 
 .board .row {
@@ -64,27 +79,30 @@ section.keyboard {
   align-items: center;
   margin: 3vmin;
   font-size: 3vmin;
+  font-family: sans-serif;
 }
 
 .letter {
-  background-color:rgb(173, 167, 160);
+  background-color:rgb(179, 196, 199);
 }
 
 .keyboard div {
   display: flex;
+  color: #3a4238;
+  border-radius: 2px;
 }
 
 .letter {
   width: 6vmin;
   height: 6vmin;
-  border: 1px solid black;
+  border: var(--border);
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 #enter, #delete {
-  border: 1px solid black;
+  border: var(--border);
   height: 6vmin;
   width: 12vmin;
   display: flex;
@@ -93,9 +111,9 @@ section.keyboard {
 }
 
 .right {
-  background-color: green;
+  background-color: rgb(82, 172, 82);
 }
 
 .almost-right {
-  background-color: yellow;
+  background-color: rgb(245, 245, 80);
 }

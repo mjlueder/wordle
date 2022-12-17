@@ -177,8 +177,6 @@ function compareLetters(guess, answer){
     }
   }
 
-
-
   // rowEls[currentRow].children[0].classList.add('animate__animated', 'animate__flipInX')
 
   checkWin()
