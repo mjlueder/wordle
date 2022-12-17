@@ -41,12 +41,14 @@ h1 {
   font-size: 6vmin;
 }
 
+.board {
+  background-color: rgb(146, 145, 145);
+}
 
 .board .row {
   display: grid;
   grid-template-rows: repeat(1, 10vmin);
   grid-template-columns: repeat(5, 10vmin);
-  background-color: gray;
 }
 
 
@@ -57,6 +59,10 @@ section.keyboard {
   align-items: center;
   margin: 3vmin;
   font-size: 3vmin;
+}
+
+.letter {
+  background-color:rgb(173, 167, 160);
 }
 
 .keyboard div {

@@ -10,6 +10,7 @@ import { checkWord } from "./words.js"
 let answer, guess, currentRow, currentCol
 
 let guessArr = []
+let aArr = []
 
 
 /*------------------------ Cached Element References ------------------------*/
@@ -52,6 +53,7 @@ function init(){
   currentCol = 0
   guessArr = []
   answer = getWord(1)
+  // aArr = answer.split('')
   // clear board letters & styling
   render()
   console.log('row ', currentRow)
@@ -118,15 +120,16 @@ function typeLetter(evt){
 
 function handleGuess(guessArr){
   //checkWord
-  console.log('handle guess is being called');
+  console.log('handleGuess');
   guess = guessArr.join('').toLowerCase()
-  console.log(guess);
   if (checkWord(guess)=== false) {
     rejectGuess()
   }
   // add rejection message/animation
   else if (guess === answer) {
     console.log('win!');
+    console.log(rowEls[currentRow]);
+    rowEls[currentRow].classList.add("right")
     //add win animation etc
   } else {
     compareLetters(guess, answer)
@@ -138,17 +141,24 @@ function rejectGuess(){
 }
 
 function compareLetters(guess, answer){
-  console.log(guess[0]);
-  for (let i = 0; i < guess.length; i++){
-    if (guess[i] === answer[i]) {
+  console.log('compareLetters');
+  let gArr = guess.split('')
+  aArr = answer.split('')
+  // console.log(gArr, aArr);
+  // compares guess and answer letters. removes letter from answer array, changes tile to green
+  for (let i = 0; i < gArr.length; i++){
+    if (gArr[i] === aArr[i]) {
       console.log(`match at ${i}!`);
+      // console.log(aArr);
       rowEls[currentRow].children[i].classList.add("right")
-      // changes div color to green when letter is right
       let x = rowEls[currentRow].children[i].textContent.toLowerCase()
       console.log(x);
       document.getElementById(x).classList.add("right")
+      aArr[i] = 0
+      console.log(aArr);
     }
   }
+
   currentRow++
   currentCol = 0
   guessArr = []
