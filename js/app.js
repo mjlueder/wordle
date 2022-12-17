@@ -7,7 +7,7 @@ import { checkWord } from "./words.js"
 
 /*---------------------------- Variables (state) ----------------------------*/
 
-let answer, guess, currentRow, currentCol
+let answer, guess, currentRow, currentCol, win
 
 let guessArr = []
 let aArr = []
@@ -51,6 +51,7 @@ function init(){
   currentRow = 0
   currentCol = 0
   guessArr = []
+  win = false
   answer = getWord(1)
   aArr = answer.split('')
   // clear board letters & styling
@@ -63,18 +64,21 @@ function init(){
 
 function useKeys(evt){
   messageEl.textContent = ''
+  if (win === true) return
   // below: add exception for enter key (if currentCol === 5 && evt.target.id = 'enter')
   if (currentCol === 5 && evt.target.id === 'enter') {
-    guess = guessArr.join('').toLowerCase()
-    console.log(guess);
-    if (checkWord(guess) !== true) {
-      console.log('rejected');
-      messageEl.textContent = 'Not a word'
-      // only allow 'delete'
-      return
-    } else {
-      compareLetters(guess, answer)
-    }}
+    handleGuess()
+    // guess = guessArr.join('').toLowerCase()
+    // console.log(guess);
+    // if (checkWord(guess) !== true) {
+    //   console.log('rejected');
+    //   messageEl.textContent = 'Not a word'
+    //   // only allow 'delete'
+    //   return
+    // } else {
+    //   compareLetters(guess, answer)
+    // }
+  }
 
 
 
@@ -97,20 +101,22 @@ function useKeys(evt){
 
 function typeLetter(evt){
   messageEl.textContent = ''
+  if (win === true) return
   // add delete & enter .which values
   // return evt.which = 13
   // delete evt.which = 8
   if (currentCol === 5 && evt.which === 13) {
-    guess = guessArr.join('').toLowerCase()
-    console.log(guess);
-    if (checkWord(guess) !== true) {
-      console.log('rejected');
-      messageEl.textContent = 'Not a word'
-      // only allow 'delete'
-      return
-    } else {
-      compareLetters(guess, answer)
-    }
+    handleGuess()
+    // guess = guessArr.join('').toLowerCase()
+    // console.log(guess);
+    // if (checkWord(guess) !== true) {
+    //   console.log('rejected');
+    //   messageEl.textContent = 'Not a word'
+    //   // only allow 'delete'
+    //   return
+    // } else {
+    //   compareLetters(guess, answer)
+    // }
   }
   if (evt.which === 8){
     if (currentCol === 0) return
@@ -133,33 +139,19 @@ function typeLetter(evt){
 
 
 
-//getWord
-
-//checkWord  ** make guess lowercase **
-
-
-// function handleGuess(guessArr){
-//   //checkWord
-//   console.log('handleGuess');
-//   guess = guessArr.join('').toLowerCase()
-//   if (checkWord(guess)=== false) {
-//     rejectGuess()
-//   // }
-//   // // add rejection message/animation
-//   // else if (guess === answer) {
-//   //   console.log('win!');
-//   //   console.log(rowEls[currentRow]);
-//   //   rowEls[currentRow].classList.add("right")
-//   //   //add win animation etc
-//   } else {
-//     compareLetters(guess, answer)
-//   }
-// }
-
-// function rejectGuess(){
-//   messageEl.textContent = 'Not a word'
-
-// }
+function handleGuess(){
+  //checkWord
+  guess = guessArr.join('').toLowerCase()
+    console.log(guess);
+    if (checkWord(guess) !== true) {
+      console.log('rejected');
+      messageEl.textContent = 'Not a word'
+      // only allow 'delete'
+      return
+    } else {
+      compareLetters(guess, answer)
+    }
+}
 
 function compareLetters(guess, answer){
   console.log('compareLetters');
@@ -185,32 +177,22 @@ function compareLetters(guess, answer){
 
   if (guess === answer) {
     console.log('win!');
-    // console.log(rowEls[currentRow]);
-    // rowEls[currentRow].classList.add("right")
+    messageEl.textContent = 'You win!'
+    win = true
+    return
   }
 
-
+  if (currentRow === 5) {
+    messageEl.textContent = `The answer was ${answer.toUpperCase()}`
+    return
+  }
 
   currentRow++
   currentCol = 0
   guessArr = []
 }
 
-function updateBoard(){
 
-}
-
-function colorBoard(){
-  
-}
-
-function colorKeyboard(){
-
-}
-
-function checkForLoss(){
-  // if all values in the guesses array are !== null, display correct answer and "play again?" button
-}
 
 function render(){
 
