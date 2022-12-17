@@ -17,10 +17,9 @@ let aArr = []
 
 
 const boardEl = document.querySelector('.board')
-
 const keyboardEl = document.querySelector('.keyboard')
-
 const rowEls = document.querySelectorAll('.row')
+const messageEl = document.getElementById('message')
 
 
 /*----------------------------- Event Listeners -----------------------------*/
@@ -63,11 +62,22 @@ function init(){
 }
 
 function useKeys(evt){
+  messageEl.textContent = ''
   // below: add exception for enter key (if currentCol === 5 && evt.target.id = 'enter')
   if (currentCol === 5 && evt.target.id === 'enter') {
-    handleGuess(guessArr)
-    return
-  }
+    guess = guessArr.join('').toLowerCase()
+    console.log(guess);
+    if (checkWord(guess) !== true) {
+      console.log('rejected');
+      messageEl.textContent = 'Not a word'
+      // only allow 'delete'
+      return
+    } else {
+      compareLetters(guess, answer)
+    }}
+
+
+
   if (evt.target.id === 'delete'){
     if (currentCol === 0) return
     currentCol--
@@ -86,12 +96,21 @@ function useKeys(evt){
 }
 
 function typeLetter(evt){
+  messageEl.textContent = ''
   // add delete & enter .which values
   // return evt.which = 13
   // delete evt.which = 8
   if (currentCol === 5 && evt.which === 13) {
-    handleGuess(guessArr)
-    return
+    guess = guessArr.join('').toLowerCase()
+    console.log(guess);
+    if (checkWord(guess) !== true) {
+      console.log('rejected');
+      messageEl.textContent = 'Not a word'
+      // only allow 'delete'
+      return
+    } else {
+      compareLetters(guess, answer)
+    }
   }
   if (evt.which === 8){
     if (currentCol === 0) return
@@ -119,27 +138,28 @@ function typeLetter(evt){
 //checkWord  ** make guess lowercase **
 
 
-function handleGuess(guessArr){
-  //checkWord
-  console.log('handleGuess');
-  guess = guessArr.join('').toLowerCase()
-  if (checkWord(guess)=== false) {
-    rejectGuess()
-  // }
-  // // add rejection message/animation
-  // else if (guess === answer) {
-  //   console.log('win!');
-  //   console.log(rowEls[currentRow]);
-  //   rowEls[currentRow].classList.add("right")
-  //   //add win animation etc
-  } else {
-    compareLetters(guess, answer)
-  }
-}
+// function handleGuess(guessArr){
+//   //checkWord
+//   console.log('handleGuess');
+//   guess = guessArr.join('').toLowerCase()
+//   if (checkWord(guess)=== false) {
+//     rejectGuess()
+//   // }
+//   // // add rejection message/animation
+//   // else if (guess === answer) {
+//   //   console.log('win!');
+//   //   console.log(rowEls[currentRow]);
+//   //   rowEls[currentRow].classList.add("right")
+//   //   //add win animation etc
+//   } else {
+//     compareLetters(guess, answer)
+//   }
+// }
 
-function rejectGuess(){
-  // keep function ?
-}
+// function rejectGuess(){
+//   messageEl.textContent = 'Not a word'
+
+// }
 
 function compareLetters(guess, answer){
   console.log('compareLetters');
