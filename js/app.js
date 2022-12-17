@@ -54,33 +54,19 @@ function init(){
   win = false
   answer = getWord(1)
   aArr = answer.split('')
-  // clear board letters & styling
   render()
-  console.log('row ', currentRow)
-  console.log('col ', currentCol)
-  console.log('guessArr ', guessArr)
+  // console.log('row ', currentRow)
+  // console.log('col ', currentCol)
+  // console.log('guessArr ', guessArr)
   console.log(answer);
 }
 
 function useKeys(evt){
-  messageEl.textContent = ''
+  if (win === false ) messageEl.textContent = ''
   if (win === true) return
-  // below: add exception for enter key (if currentCol === 5 && evt.target.id = 'enter')
   if (currentCol === 5 && evt.target.id === 'enter') {
     handleGuess()
-    // guess = guessArr.join('').toLowerCase()
-    // console.log(guess);
-    // if (checkWord(guess) !== true) {
-    //   console.log('rejected');
-    //   messageEl.textContent = 'Not a word'
-    //   // only allow 'delete'
-    //   return
-    // } else {
-    //   compareLetters(guess, answer)
-    // }
   }
-
-
 
   if (evt.target.id === 'delete'){
     if (currentCol === 0) return
@@ -90,33 +76,26 @@ function useKeys(evt){
     console.log(guessArr);
     return
   }
+
   if (currentCol === 5) return
-  // add animation?
+  
   if (evt.target.id === 'enter' || evt.target.id === '') return
+
   rowEls[currentRow].children[currentCol].textContent = evt.target.id.toUpperCase()
+
   currentCol++
   guessArr.push(evt.target.id)
-  console.log(guessArr);
+  // console.log(guessArr);
 }
 
 function typeLetter(evt){
-  messageEl.textContent = ''
+  if (win === false ) messageEl.textContent = ''
   if (win === true) return
   // add delete & enter .which values
   // return evt.which = 13
   // delete evt.which = 8
   if (currentCol === 5 && evt.which === 13) {
     handleGuess()
-    // guess = guessArr.join('').toLowerCase()
-    // console.log(guess);
-    // if (checkWord(guess) !== true) {
-    //   console.log('rejected');
-    //   messageEl.textContent = 'Not a word'
-    //   // only allow 'delete'
-    //   return
-    // } else {
-    //   compareLetters(guess, answer)
-    // }
   }
   if (evt.which === 8){
     if (currentCol === 0) return
@@ -127,7 +106,6 @@ function typeLetter(evt){
     return
   }
   if (evt.which < 65 || evt.which > 90) return
-  // below: add exception for enter key (if currentCol === 5 && evt.key = 'enter')
   if (currentCol === 5) return
   // console.log(evt.key);
   rowEls[currentRow].children[currentCol].textContent = evt.key.toUpperCase()
@@ -146,12 +124,14 @@ function handleGuess(){
     if (checkWord(guess) !== true) {
       console.log('rejected');
       messageEl.textContent = 'Not a word'
+      rowEls[currentRow].classList.add('animate__animated', 'animate__headShake')
       // only allow 'delete'
       return
     } else {
       compareLetters(guess, answer)
     }
 }
+
 
 function compareLetters(guess, answer){
   console.log('compareLetters');
@@ -174,6 +154,8 @@ function compareLetters(guess, answer){
       console.log(copyAArr);
     }
   }
+
+  // rowEls[currentRow].children[0].classList.add('animate__animated', 'animate__flipInX')
 
   if (guess === answer) {
     console.log('win!');
