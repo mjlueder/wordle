@@ -1,5 +1,6 @@
 html {
   box-sizing: border-box;
+  height: 100%
 }
 
 *,
@@ -14,6 +15,7 @@ html {
   --bg: #5085a5;
   /* --txt: #687864; */
 }
+
 body {
   background: linear-gradient(to top, #09203f 0%, #537895 100%);
 }
@@ -23,6 +25,7 @@ h1 {
   margin: 0;
   color: #F7F9FB;
   text-shadow: 2px 2px #434961;
+  
 }
 
 h3 {
@@ -62,6 +65,8 @@ h3 {
   font-family: sans-serif;
   border-radius: 4px;
   color: rgb(37, 36, 41);
+  border: #2f2f34 1px solid;
+  box-shadow: #1a1a1c 3px 3px;
 }
 
 .board .row {
@@ -88,7 +93,8 @@ section.keyboard {
 .keyboard div {
   display: flex;
   color: #08070e;
-  border-radius: 2px;
+  border-radius: 3px;
+  box-shadow: #1a1a1c 3px 3px;
 }
 
 .letter {

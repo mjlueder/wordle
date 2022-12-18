@@ -136,12 +136,12 @@ function handleGuess(){
 
 function compareLetters(guess, answer){
   console.log('compareLetters');
+  aArr = answer.split('')
   let gArr = guess.split('')
-  let copyAArr = answer.split('')
   // console.log(gArr, aArr);
   // compares guess and answer letters. removes letter from answer array, changes tile to green
   for (let i = 0; i < gArr.length; i++){
-    if (gArr[i] === copyAArr[i]) {
+    if (gArr[i] === aArr[i]) {
       rowEls[currentRow].children[i].classList.add("right")
 
       let x = rowEls[currentRow].children[i].textContent.toLowerCase()
@@ -159,7 +159,7 @@ function compareLetters(guess, answer){
   for (let i = 0; i < gArr.length; i++){
     console.log('start G ',gArr);
     console.log('start A ',aArr);
-    let idx = copyAArr.findIndex(function(el){
+    let idx = aArr.findIndex(function(el){
       console.log('el ',el);
       console.log('gArr[i] ',gArr[i]);
 
@@ -167,8 +167,8 @@ function compareLetters(guess, answer){
     })
     console.log('idx ',idx);
     if (idx !== -1) {
-      copyAArr[idx] = 0
-      console.log('end A ',copyAArr);
+      aArr[idx] = 0
+      console.log('end A ',aArr);
 
       rowEls[currentRow].children[i].classList.add("almost-right")
 
@@ -189,7 +189,7 @@ function compareLetters(guess, answer){
       document.getElementById(x).classList.add("wrong")
     }
   }
-
+ 
 
   // rowEls[currentRow].children[0].classList.add('animate__animated', 'animate__flipInX')
 
