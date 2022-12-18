@@ -58,14 +58,46 @@ function init(){
   win = false
   answer = getWord(1)
   aArr = answer.split('')
-  resetEl.style.display = 'none'
-  messageEl.textContent = ''
-  
+  clearBoard()
   render()
   // console.log('row ', currentRow)
   // console.log('col ', currentCol)
   // console.log('guessArr ', guessArr)
   console.log(answer);
+}
+
+function clearBoard(){
+  resetEl.style.display = 'none'
+  messageEl.textContent = ''
+  for (let r = 0; r < 6; r++){
+    for (let c = 0; c < 5; c++){
+      if (rowEls[r].children[c].textContent !== ''){
+        rowEls[r].children[c].textContent = ''
+      }
+      if (rowEls[r].children[c].classList.contains('right')){
+        rowEls[r].children[c].classList.remove('right')
+      }
+      if (rowEls[r].children[c].classList.contains('almost-right')){
+        rowEls[r].children[c].classList.remove('almost-right')
+      }
+    }
+  }
+  let alphabet = "abcdefghijklmnopqrstuvwxyz"
+  for (let i = 0; i < alphabet.length; i++){
+    console.log(alphabet[i]);
+    console.log(document.getElementById(alphabet[i]));
+    console.log(document.getElementById(alphabet[i]).classList.contains('right'));
+
+    if (document.getElementById(alphabet[i]).classList.contains('right')){
+      document.getElementById(alphabet[i]).classList.remove('right')
+    }
+    if (document.getElementById(alphabet[i]).classList.contains('almost-right')){
+      document.getElementById(alphabet[i]).classList.remove('almost-right')
+    }
+    if (document.getElementById(alphabet[i]).classList.contains('wrong')){
+      document.getElementById(alphabet[i]).classList.remove('wrong')
+    }
+  }
 }
 
 function useKeys(evt){
