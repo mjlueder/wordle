@@ -20,6 +20,8 @@ const boardEl = document.querySelector('.board')
 const keyboardEl = document.querySelector('.keyboard')
 const rowEls = document.querySelectorAll('.row')
 const messageEl = document.getElementById('message')
+const resetEl = document.getElementById('reset-btn')
+
 
 
 /*----------------------------- Event Listeners -----------------------------*/
@@ -31,6 +33,8 @@ const messageEl = document.getElementById('message')
 document.querySelector('body').addEventListener('keydown', typeLetter)
 
 keyboardEl.addEventListener('click', useKeys)
+
+resetEl.addEventListener('click', init)
 
 /*-------------------------------- Functions --------------------------------*/
 
@@ -52,9 +56,11 @@ function init(){
   currentCol = 0
   guessArr = []
   win = false
-  // answer = getWord(1)
-  answer='train'
+  answer = getWord(1)
   aArr = answer.split('')
+  resetEl.style.display = 'none'
+  messageEl.textContent = ''
+  
   render()
   // console.log('row ', currentRow)
   // console.log('col ', currentCol)
@@ -121,7 +127,7 @@ function typeLetter(evt){
 function handleGuess(){
   //checkWord
   guess = guessArr.join('').toLowerCase()
-    console.log(guess);
+    // console.log(guess);
     if (checkWord(guess) !== true) {
       console.log('rejected');
       messageEl.textContent = 'Not a word'
@@ -135,7 +141,7 @@ function handleGuess(){
 
 
 function compareLetters(guess, answer){
-  console.log('compareLetters');
+  // console.log('compareLetters');
   aArr = answer.split('')
   let gArr = guess.split('')
   // console.log(gArr, aArr);
@@ -145,7 +151,7 @@ function compareLetters(guess, answer){
       rowEls[currentRow].children[i].classList.add("right")
 
       let x = rowEls[currentRow].children[i].textContent.toLowerCase()
-      console.log(x);
+      // console.log(x);
       document.getElementById(x).classList.add("right")
 
       aArr[i] = 0
@@ -157,35 +163,35 @@ function compareLetters(guess, answer){
   }
 
   for (let i = 0; i < gArr.length; i++){
-    console.log('start G ',gArr);
-    console.log('start A ',aArr);
+    // console.log('start G ',gArr);
+    // console.log('start A ',aArr);
     let idx = aArr.findIndex(function(el){
-      console.log('el ',el);
-      console.log('gArr[i] ',gArr[i]);
+      // console.log('el ',el);
+      // console.log('gArr[i] ',gArr[i]);
 
       return (el !== 0 && el === gArr[i])
     })
-    console.log('idx ',idx);
+    // console.log('idx ',idx);
     if (idx !== -1) {
       aArr[idx] = 0
-      console.log('end A ',aArr);
+      // console.log('end A ',aArr);
 
       rowEls[currentRow].children[i].classList.add("almost-right")
 
       let x = rowEls[currentRow].children[i].textContent.toLowerCase()
-      console.log(x);
+      // console.log(x);
       document.getElementById(x).classList.add("almost-right")
     }
   }
 
   for(let i = 0; i < 5; i++){
     if (rowEls[currentRow].children[i].classList.contains('right') || rowEls[currentRow].children[i].classList.contains('almost-right')) {
-      console.log('true');
+      // console.log('true');
     }
     else {
-      console.log('else');
+      // console.log('else');
       let x = rowEls[currentRow].children[i].textContent.toLowerCase()
-      console.log(x);
+      // console.log(x);
       document.getElementById(x).classList.add("wrong")
     }
   }
@@ -203,16 +209,18 @@ function compareLetters(guess, answer){
 
 function checkWin(){
   if (guess === answer) {
-    console.log('win!');
-    messageEl.textContent = 'You win!'
+    // console.log('win!');
+    messageEl.textContent = 'You win!         '
     win = true
+    resetEl.style.display = ''
     return
   }
 }
 
 function checkLoss(){
   if (currentRow === 5 && win === false) {
-    messageEl.textContent = `The answer was ${answer.toUpperCase()}`
+    messageEl.textContent = `The answer was ${answer.toUpperCase()}  `
+    resetEl.style.display = ''
     return
   }
 }

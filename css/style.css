@@ -21,19 +21,22 @@ body {
 }
 
 h1 {
-  font-size: 9vmin;
+  font-size: 8vmin;
   margin: 0;
   color: #F7F9FB;
   text-shadow: 2px 2px #434961;
-  
+  font-family: 'DM Serif Display', serif;
+  padding: 0;
 }
 
 h3 {
   height: 5vmin;
   font-size: 4vmin;
-  margin: 1vmin 0 0 0;
+  margin: 1vmin 0;
   color: #F7F9FB;
   text-shadow: 1px 1px #434961;
+  font-family: 'DM Serif Display', serif;
+  display: inline-block;
 }
 
 .content {
@@ -65,7 +68,7 @@ h3 {
   font-family: sans-serif;
   border-radius: 4px;
   color: rgb(37, 36, 41);
-  border: #2f2f34 1px solid;
+  /* border: #2f2f34 1px solid; */
   box-shadow: #1a1a1c 3px 3px;
 }
 
@@ -81,7 +84,7 @@ section.keyboard {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 3vmin;
+  padding: 3vmin;
   font-size: 3vmin;
   font-family: sans-serif;
 }
@@ -126,4 +129,22 @@ section.keyboard {
 .wrong {
   background-color: #56565f;
   color: #F7F9FB;
+}
+
+#reset-btn {
+  margin: 1vmin 0;
+  height: 5vmin;
+  font-family: 'DM Serif Display', serif;
+  font-size: 3vmin;
+  padding: 0 1vmin 1vmin 1vmin;
+  color: #2f2f34;
+  border-radius: 1.5vmin;
+  background-color: color: #F7F9FB;
+}
+
+#display {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }

@@ -6,13 +6,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
   <link rel="stylesheet" href="./css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Rubik+80s+Fade&display=swap" rel="stylesheet">
   <script type="module" src="./js/app.js"></script>
   <title>ML-Wordle</title>
 </head>
 <body>
   <div class="content">
     <h1>Wordle</h1>
-    <h3 id="message"></h3>
+    <div #display>
+      <h3 id="message"></h3>
+      <button id="reset-btn">Play again?</button>
+    </div>
     <section class="board">
       <div class="row" id="row0">
         <div></div>
