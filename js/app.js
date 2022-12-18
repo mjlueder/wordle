@@ -52,7 +52,8 @@ function init(){
   currentCol = 0
   guessArr = []
   win = false
-  answer = getWord(1)
+  // answer = getWord(1)
+  answer='train'
   aArr = answer.split('')
   render()
   // console.log('row ', currentRow)
@@ -177,6 +178,19 @@ function compareLetters(guess, answer){
     }
   }
 
+  for(let i = 0; i < 5; i++){
+    if (rowEls[currentRow].children[i].classList.contains('right') || rowEls[currentRow].children[i].classList.contains('almost-right')) {
+      console.log('true');
+    }
+    else {
+      console.log('else');
+      let x = rowEls[currentRow].children[i].textContent.toLowerCase()
+      console.log(x);
+      document.getElementById(x).classList.add("wrong")
+    }
+  }
+
+
   // rowEls[currentRow].children[0].classList.add('animate__animated', 'animate__flipInX')
 
   checkWin()
@@ -197,7 +211,7 @@ function checkWin(){
 }
 
 function checkLoss(){
-  if (currentRow === 5) {
+  if (currentRow === 5 && win === false) {
     messageEl.textContent = `The answer was ${answer.toUpperCase()}`
     return
   }
