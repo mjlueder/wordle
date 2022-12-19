@@ -243,10 +243,23 @@ function wrongLetters(){
 function animateTiles(){
   let r = currentRow
   rowEls[currentRow].children[0].classList.add('animate__animated', 'animate__flipInX')
-  setTimeout(() => {rowEls[r].children[1].classList.add('animate__animated', 'animate__flipInX')}, 900)
-  setTimeout(() => {rowEls[r].children[2].classList.add('animate__animated', 'animate__flipInX')}, 1800)
-  setTimeout(() => {rowEls[r].children[3].classList.add('animate__animated', 'animate__flipInX')}, 2700)
-  setTimeout(() => {rowEls[r].children[4].classList.add('animate__animated', 'animate__flipInX')}, 3600)
+  playFlip()
+  setTimeout(() => {
+    rowEls[r].children[1].classList.add('animate__animated', 'animate__flipInX')
+    playFlip()
+  }, 900)
+  setTimeout(() => {
+    rowEls[r].children[2].classList.add('animate__animated', 'animate__flipInX')
+    playFlip()
+  }, 1800)
+  setTimeout(() => {
+    rowEls[r].children[3].classList.add('animate__animated', 'animate__flipInX')
+    playFlip()
+  }, 2700)
+  setTimeout(() => {
+    rowEls[r].children[4].classList.add('animate__animated', 'animate__flipInX')
+    playFlip()
+  }, 3600)
 }
 
 function checkWin(){
@@ -267,6 +280,13 @@ function checkLoss(){
     resetEl.style.display = ''
     return
   }
+}
+
+let flip = new Audio('../flip.mp3')
+
+function playFlip(){
+  flip.volume = .2
+  flip.play()
 }
 
 function render(){
