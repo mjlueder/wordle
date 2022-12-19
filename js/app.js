@@ -173,61 +173,55 @@ function handleGuess(){
 
 
 function compareLetters(guess, answer){
-  // console.log('compareLetters');
   aArr = answer.split('')
   let gArr = guess.split('')
-  // console.log(gArr, aArr);
   // compares guess and answer letters. removes letter from answer array, changes tile to green
+
+  // green letters (right letter, right spot)
   for (let i = 0; i < gArr.length; i++){
     if (gArr[i] === aArr[i]) {
+      //board
       rowEls[currentRow].children[i].classList.add("right")
-
+      // keyboard
       let x = rowEls[currentRow].children[i].textContent.toLowerCase()
-      // console.log(x);
       document.getElementById(x).classList.add("right")
-
+      console.log(x, ' = green');
       aArr[i] = 0
       gArr[i] = 0
-      // console.log(aArr)
-      // console.log(copyAArr);
-      // console.log(gArr);
     }
   }
 
+  // yellow letters: in the word, not in the right place
   for (let i = 0; i < gArr.length; i++){
-    // console.log('start G ',gArr);
-    // console.log('start A ',aArr);
     let idx = aArr.findIndex(function(el){
-      // console.log('el ',el);
-      // console.log('gArr[i] ',gArr[i]);
-
       return (el !== 0 && el === gArr[i])
     })
-    // console.log('idx ',idx);
     if (idx !== -1) {
       aArr[idx] = 0
-      // console.log('end A ',aArr);
-
+      // board
       rowEls[currentRow].children[i].classList.add("almost-right")
-
+      // keyboard
       let x = rowEls[currentRow].children[i].textContent.toLowerCase()
-      // console.log(x);
-      document.getElementById(x).classList.add("almost-right")
+      if (document.getElementById(x).classList.contains("right") === false){
+        console.log(`${x} = 'right': ${document.getElementById(x).classList.contains("right")}`);
+        document.getElementById(x).classList.add("almost-right")
+      }
     }
   }
 
+  // wrong letters: keyboard only
   for(let i = 0; i < 5; i++){
     if (rowEls[currentRow].children[i].classList.contains('right') || rowEls[currentRow].children[i].classList.contains('almost-right')) {
-      // console.log('true');
+      console.log(i, ' already green or yellow');
     }
     else {
-      // console.log('else');
+      console.log('else: ');
       let x = rowEls[currentRow].children[i].textContent.toLowerCase()
-      // console.log(x);
+      console.log(x, 'should be wrong');
+      if ((document.getElementById(x).classList.contains))
       document.getElementById(x).classList.add("wrong")
     }
   }
- 
 
   // rowEls[currentRow].children[0].classList.add('animate__animated', 'animate__flipInX')
 
@@ -242,7 +236,7 @@ function compareLetters(guess, answer){
 function checkWin(){
   if (guess === answer) {
     // console.log('win!');
-    messageEl.textContent = 'You win!         '
+    messageEl.textContent = 'You win!   '
     win = true
     resetEl.style.display = ''
     return

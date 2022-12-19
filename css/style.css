@@ -17,7 +17,7 @@ html {
 }
 
 body {
-  background: linear-gradient(to top, #09203f 0%, #537895 100%);
+  background: linear-gradient(to top, #081f3c 0%, #5581a2 100%);
 }
 
 h1 {
@@ -119,17 +119,17 @@ section.keyboard {
   align-items: center;
 }
 
-.right {
-  background-color: rgb(78, 174, 61);
+.wrong {
+  background-color: #56565f;
+  color: #F7F9FB;
 }
 
 .almost-right {
   background-color: rgb(231, 231, 29);
 }
 
-.wrong {
-  background-color: #56565f;
-  color: #F7F9FB;
+.right {
+  background-color: rgb(78, 174, 61);
 }
 
 #reset-btn {
