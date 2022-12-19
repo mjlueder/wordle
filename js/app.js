@@ -223,14 +223,21 @@ function compareLetters(guess, answer){
     }
   }
 
-  // rowEls[currentRow].children[0].classList.add('animate__animated', 'animate__flipInX')
-
+  animateTiles()
   checkWin()
   checkLoss()
   
   currentRow++
   currentCol = 0
   guessArr = []
+}
+
+function animateTiles(){
+  rowEls[currentRow].children[0].classList.add('animate__animated', 'animate__flipInX')
+  rowEls[currentRow].children[1].classList.add('animate__animated', 'animate__flipInX', 'animate__delay-1s')
+  rowEls[currentRow].children[2].classList.add('animate__animated', 'animate__flipInX', 'animate__delay-2s')
+  rowEls[currentRow].children[3].classList.add('animate__animated', 'animate__flipInX', 'animate__delay-3s')
+  rowEls[currentRow].children[4].classList.add('animate__animated', 'animate__flipInX', 'animate__delay-4s')
 }
 
 function checkWin(){
