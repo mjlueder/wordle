@@ -84,9 +84,9 @@ function clearBoard(){
   }
   let alphabet = "abcdefghijklmnopqrstuvwxyz"
   for (let i = 0; i < alphabet.length; i++){
-    console.log(alphabet[i]);
-    console.log(document.getElementById(alphabet[i]));
-    console.log(document.getElementById(alphabet[i]).classList.contains('right'));
+    // console.log(alphabet[i]);
+    // console.log(document.getElementById(alphabet[i]));
+    // console.log(document.getElementById(alphabet[i]).classList.contains('right'));
 
     if (document.getElementById(alphabet[i]).classList.contains('right')){
       document.getElementById(alphabet[i]).classList.remove('right')
@@ -157,14 +157,14 @@ function typeLetter(evt){
 
 
 function handleGuess(){
-  //checkWord
   guess = guessArr.join('').toLowerCase()
-    // console.log(guess);
+  
     if (checkWord(guess) !== true) {
       console.log('rejected');
       messageEl.textContent = 'Not a word'
       rowEls[currentRow].classList.add('animate__animated', 'animate__headShake')
       // only allow 'delete'
+      rowEls[currentRow].addEventListener('animationend', () => rowEls[currentRow].classList.remove('animate__animated', 'animate__headShake'))
       return
     } else {
       compareLetters(guess, answer)
