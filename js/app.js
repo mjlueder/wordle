@@ -10,6 +10,7 @@ import { checkWord } from "./words.js"
 let answer, guess, currentRow, currentCol, win
 
 let guessArr = []
+let gArr = []
 let aArr = []
 
 
@@ -60,9 +61,6 @@ function init(){
   aArr = answer.split('')
   clearBoard()
   render()
-  // console.log('row ', currentRow)
-  // console.log('col ', currentCol)
-  // console.log('guessArr ', guessArr)
   console.log(answer);
 }
 
@@ -157,9 +155,6 @@ function typeLetter(evt){
   // console.log(guessArr);
 }
 
-
-
-
 function handleGuess(){
   guess = guessArr.join('').toLowerCase()
   
@@ -175,13 +170,25 @@ function handleGuess(){
     }
 }
 
-
 function compareLetters(guess, answer){
   aArr = answer.split('')
-  let gArr = guess.split('')
-  // compares guess and answer letters. removes letter from answer array, changes tile to green
+  gArr = guess.split('')
+  greenLetters()
+  yellowLetters()
+  wrongLetters()
+  animateTiles()
+  progressGame()
+}
 
-  // green letters (right letter, right spot)
+function progressGame(){
+  checkWin()
+  checkLoss()
+  currentRow++
+  currentCol = 0
+  guessArr = []
+}
+
+function greenLetters(){
   for (let i = 0; i < gArr.length; i++){
     let r = currentRow
     if (gArr[i] === aArr[i]) {
@@ -190,13 +197,14 @@ function compareLetters(guess, answer){
       // keyboard
       let x = rowEls[r].children[i].textContent.toLowerCase()
       document.getElementById(x).classList.add("right")
-      console.log(x, ' = green');
+      // console.log(x, ' = green');
       aArr[i] = 0
       gArr[i] = 0
     }
   }
+}
 
-  // yellow letters: in the word, not in the right place
+function yellowLetters(){
   for (let i = 0; i < gArr.length; i++){
     let r = currentRow
     let idx = aArr.findIndex(function(el){
@@ -209,34 +217,24 @@ function compareLetters(guess, answer){
       // keyboard
       let x = rowEls[r].children[i].textContent.toLowerCase()
       if (document.getElementById(x).classList.contains("right") === false){
-        console.log(`${x} = 'right': ${document.getElementById(x).classList.contains("right")}`);
         document.getElementById(x).classList.add("almost-right")
       }
     }
   }
+}
 
-  // wrong letters: keyboard only
+function wrongLetters(){
   for(let i = 0; i < 5; i++){
     let r = currentRow
     if (rowEls[r].children[i].classList.contains('right') || rowEls[r].children[i].classList.contains('almost-right')) {
-      console.log(i, ' already green or yellow');
+      // console.log(i, ' already green or yellow');
     }
     else {
-      console.log('else: ');
       let x = rowEls[r].children[i].textContent.toLowerCase()
-      console.log(x, 'should be wrong');
       if ((document.getElementById(x).classList.contains))
       document.getElementById(x).classList.add("wrong")
     }
   }
-
-  animateTiles()
-  checkWin()
-  checkLoss()
-  // timeout so row doesn't change during tile flip animation
-  currentRow++
-  currentCol = 0
-  guessArr = []
 }
 
 function animateTiles(){
