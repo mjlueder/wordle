@@ -69,6 +69,7 @@ function init(){
 function clearBoard(){
   resetEl.style.display = 'none'
   messageEl.textContent = ''
+  // clear board classes
   for (let r = 0; r < 6; r++){
     for (let c = 0; c < 5; c++){
       if (rowEls[r].children[c].textContent !== ''){
@@ -80,14 +81,17 @@ function clearBoard(){
       if (rowEls[r].children[c].classList.contains('almost-right')){
         rowEls[r].children[c].classList.remove('almost-right')
       }
+      if (rowEls[r].children[c].classList.contains('animate__animated')){
+        rowEls[r].children[c].classList.remove('animate__animated')
+      }
+      if (rowEls[r].children[c].classList.contains('animate__flipInX')){
+        rowEls[r].children[c].classList.remove('animate__flipInX')
+      }
     }
   }
+  // clear keyboard classes
   let alphabet = "abcdefghijklmnopqrstuvwxyz"
   for (let i = 0; i < alphabet.length; i++){
-    // console.log(alphabet[i]);
-    // console.log(document.getElementById(alphabet[i]));
-    // console.log(document.getElementById(alphabet[i]).classList.contains('right'));
-
     if (document.getElementById(alphabet[i]).classList.contains('right')){
       document.getElementById(alphabet[i]).classList.remove('right')
     }
@@ -181,7 +185,7 @@ function compareLetters(guess, answer){
   for (let i = 0; i < gArr.length; i++){
     if (gArr[i] === aArr[i]) {
       //board
-      rowEls[currentRow].children[i].classList.add("right")
+      setTimeout(() => {rowEls[currentRow].children[i].classList.add("right")}, i*900)
       // keyboard
       let x = rowEls[currentRow].children[i].textContent.toLowerCase()
       document.getElementById(x).classList.add("right")
@@ -199,7 +203,7 @@ function compareLetters(guess, answer){
     if (idx !== -1) {
       aArr[idx] = 0
       // board
-      rowEls[currentRow].children[i].classList.add("almost-right")
+      setTimeout(() => {rowEls[currentRow].children[i].classList.add("almost-right")}, i*900)
       // keyboard
       let x = rowEls[currentRow].children[i].textContent.toLowerCase()
       if (document.getElementById(x).classList.contains("right") === false){
@@ -226,22 +230,13 @@ function compareLetters(guess, answer){
   animateTiles()
   checkWin()
   checkLoss()
-  
-  setTimeout(() => {currentRow++}, 6000)
+  // timeout so row doesn't change during tile flip animation
+  setTimeout(() => {currentRow++}, 3601)
   currentCol = 0
   guessArr = []
 }
 
 function animateTiles(){
-  // rowEls[currentRow].children[0].classList.add('animate__animated', 'animate__flipInX')
-  // rowEls[currentRow].children[1].classList.add('animate__animated', 'animate__flipInX', 'animate__delay-1s')
-  // rowEls[currentRow].children[2].classList.add('animate__animated', 'animate__flipInX', 'animate__delay-2s')
-  // rowEls[currentRow].children[3].classList.add('animate__animated', 'animate__flipInX', 'animate__delay-3s')
-  // rowEls[currentRow].children[4].classList.add('animate__animated', 'animate__flipInX', 'animate__delay-4s')
-
-
-  // rowEls[currentRow].addEventListener('animationend', () => rowEls[currentRow].classList.remove('animate__animated', 'animate__headShake'))
-
   rowEls[currentRow].children[0].classList.add('animate__animated', 'animate__flipInX')
   setTimeout(() => {rowEls[currentRow].children[1].classList.add('animate__animated', 'animate__flipInX')}, 900)
   setTimeout(() => {rowEls[currentRow].children[2].classList.add('animate__animated', 'animate__flipInX')}, 1800)
