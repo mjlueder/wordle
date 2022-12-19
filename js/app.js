@@ -227,7 +227,7 @@ function compareLetters(guess, answer){
   checkWin()
   checkLoss()
   
-  currentRow++
+  setTimeout(() => {currentRow++}, 6000)
   currentCol = 0
   guessArr = []
 }
@@ -243,15 +243,10 @@ function animateTiles(){
   // rowEls[currentRow].addEventListener('animationend', () => rowEls[currentRow].classList.remove('animate__animated', 'animate__headShake'))
 
   rowEls[currentRow].children[0].classList.add('animate__animated', 'animate__flipInX')
-  
-  setTimeout(() => {rowEls[currentRow].children[1].classList.add('animate__animated', 'animate__flipInX')}, 1000)
-  setTimeout(() => {rowEls[currentRow].children[2].classList.add('animate__animated', 'animate__flipInX')}, 2000)
-
-
-  rowEls[currentRow].children[3].classList.add('animate__animated', 'animate__flipInX', 'animate__delay-3s')
-  rowEls[currentRow].children[4].classList.add('animate__animated', 'animate__flipInX', 'animate__delay-4s')
-
-
+  setTimeout(() => {rowEls[currentRow].children[1].classList.add('animate__animated', 'animate__flipInX')}, 900)
+  setTimeout(() => {rowEls[currentRow].children[2].classList.add('animate__animated', 'animate__flipInX')}, 1800)
+  setTimeout(() => {rowEls[currentRow].children[3].classList.add('animate__animated', 'animate__flipInX')}, 2700)
+  setTimeout(() => {rowEls[currentRow].children[4].classList.add('animate__animated', 'animate__flipInX')}, 3600)
 }
 
 function checkWin(){
