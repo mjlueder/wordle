@@ -51,12 +51,17 @@ h3 {
 }
 
 .row div {
-  border: 2px solid lightgray;
+  /* border: 2px solid lightgray; */
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 6vmin;
   margin: .2vmin;
+  /* border-radius: .25vmin; */
+}
+
+.tile {
+  border: 2px solid lightgray;
   border-radius: .25vmin;
 }
 
@@ -126,10 +131,12 @@ section.keyboard {
 
 .almost-right {
   background-color: rgb(231, 231, 29);
+  border-color: rgb(231, 231, 29);
 }
 
 .right {
   background-color: rgb(78, 174, 61);
+  border-color: rgb(78, 174, 61);
 }
 
 #reset-btn {
