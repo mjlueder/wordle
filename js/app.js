@@ -79,6 +79,9 @@ function clearBoard(){
       if (rowEls[r].children[c].classList.contains('almost-right')){
         rowEls[r].children[c].classList.remove('almost-right')
       }
+      if (rowEls[r].children[c].classList.contains('wrong-tile')){
+        rowEls[r].children[c].classList.remove('wrong-tile')
+      }
       if (rowEls[r].children[c].classList.contains('animate__animated', 'animate__flipInX')){
         rowEls[r].children[c].classList.remove('animate__animated', 'animate__flipInX')
       }
@@ -93,8 +96,8 @@ function clearBoard(){
     if (document.getElementById(alphabet[i]).classList.contains('almost-right')){
       document.getElementById(alphabet[i]).classList.remove('almost-right')
     }
-    if (document.getElementById(alphabet[i]).classList.contains('wrong')){
-      document.getElementById(alphabet[i]).classList.remove('wrong')
+    if (document.getElementById(alphabet[i]).classList.contains('wrong-key')){
+      document.getElementById(alphabet[i]).classList.remove('wrong-key')
     }
   }
   // clear row 'win' animation
@@ -233,9 +236,10 @@ function wrongLetters(){
       // console.log(i, ' already green or yellow');
     }
     else {
+      setTimeout(() => {rowEls[r].children[i].classList.add('wrong-tile')}, i*900)
       let x = rowEls[r].children[i].textContent.toLowerCase()
       if ((document.getElementById(x).classList.contains))
-      document.getElementById(x).classList.add("wrong")
+      document.getElementById(x).classList.add("wrong-key")
     }
   }
 }

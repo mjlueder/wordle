@@ -33,8 +33,8 @@ h1 {
 }
 
 h3 {
-  height: 5vmin;
-  font-size: 4vmin;
+  height: 4.5vmin;
+  font-size: 3.5vmin;
   margin: 1vmin 0;
   color: #F7F9FB;
   text-shadow: 1px 1px #434961;
@@ -50,29 +50,23 @@ h3 {
   justify-content: center; 
 }
 
-/* .board {
-  display: grid;
-  grid-template-rows: repeat(6, 9vmin);
-  grid-template-columns: repeat(5, 9vmin);
-  border: 1px solid black; 
-}*/
-
-
 .row div {
-  border: var(--border);
+  border: 2px solid lightgray;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 6vmin;
+  margin: .2vmin;
+  border-radius: .25vmin;
 }
 
 .board {
-  background-color: #afb1b7;
+  /* background-color: #afb1b7; */
   font-family: sans-serif;
   border-radius: 4px;
   color: rgb(37, 36, 41);
   /* border: #2f2f34 1px solid; */
-  box-shadow: #1a1a1c 3px 3px;
+  /* box-shadow: #1a1a1c 3px 3px; */
 }
 
 .board .row {
@@ -88,7 +82,7 @@ section.keyboard {
   justify-content: center;
   align-items: center;
   padding: 3vmin;
-  font-size: 3vmin;
+  font-size: 4vmin;
   font-family: sans-serif;
 }
 
@@ -99,7 +93,7 @@ section.keyboard {
 .keyboard div {
   display: flex;
   color: #08070e;
-  border-radius: 3px;
+  border-radius: .7vmin;
   box-shadow: #1a1a1c 3px 3px;
 }
 
@@ -121,7 +115,11 @@ section.keyboard {
   align-items: center;
 }
 
-.wrong {
+.wrong-tile{
+  background-color: lightgray;
+}
+
+.wrong-key {
   background-color: #56565f;
   color: #F7F9FB;
 }
@@ -136,9 +134,9 @@ section.keyboard {
 
 #reset-btn {
   margin: 0 0 1vmin 1vmin;
-  height: 5vmin;
+  height: 4vmin;
   font-family: 'DM Serif Display', serif;
-  font-size: 3vmin;
+  font-size: 2.5vmin;
   padding: 0 1vmin 1vmin 1vmin;
   color: #2f2f34;
   border-radius: 1.5vmin;
