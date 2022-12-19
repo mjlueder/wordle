@@ -79,11 +79,8 @@ function clearBoard(){
       if (rowEls[r].children[c].classList.contains('almost-right')){
         rowEls[r].children[c].classList.remove('almost-right')
       }
-      if (rowEls[r].children[c].classList.contains('animate__animated')){
-        rowEls[r].children[c].classList.remove('animate__animated')
-      }
-      if (rowEls[r].children[c].classList.contains('animate__flipInX')){
-        rowEls[r].children[c].classList.remove('animate__flipInX')
+      if (rowEls[r].children[c].classList.contains('animate__animated', 'animate__flipInX')){
+        rowEls[r].children[c].classList.remove('animate__animated', 'animate__flipInX')
       }
     }
   }
@@ -98,6 +95,12 @@ function clearBoard(){
     }
     if (document.getElementById(alphabet[i]).classList.contains('wrong')){
       document.getElementById(alphabet[i]).classList.remove('wrong')
+    }
+  }
+  // clear row 'win' animation
+  for (let i = 0; i < 6; i++) {
+    if (rowEls[i].classList.contains('animate__animated', 'animate__flash')){
+      rowEls[i].classList.remove('animate__animated', 'animate__flash')
     }
   }
 }
@@ -247,11 +250,13 @@ function animateTiles(){
 }
 
 function checkWin(){
+  let r = currentRow
   if (guess === answer) {
     // console.log('win!');
     messageEl.textContent = 'You win!   '
     win = true
     resetEl.style.display = ''
+    setTimeout(() => {rowEls[r].classList.add('animate__animated', 'animate__flash')}, 4000)
     return
   }
 }
