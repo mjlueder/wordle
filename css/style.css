@@ -113,7 +113,7 @@ section.keyboard {
 #enter, #delete {
   border: var(--border);
   height: 6vmin;
-  width: 12vmin;
+  width: 10vmin;
   display: flex;
   justify-content: center;
   align-items: center;

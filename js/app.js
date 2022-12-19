@@ -183,11 +183,12 @@ function compareLetters(guess, answer){
 
   // green letters (right letter, right spot)
   for (let i = 0; i < gArr.length; i++){
+    let r = currentRow
     if (gArr[i] === aArr[i]) {
       //board
-      setTimeout(() => {rowEls[currentRow].children[i].classList.add("right")}, i*900)
+      setTimeout(() => {rowEls[r].children[i].classList.add("right")}, i*900)
       // keyboard
-      let x = rowEls[currentRow].children[i].textContent.toLowerCase()
+      let x = rowEls[r].children[i].textContent.toLowerCase()
       document.getElementById(x).classList.add("right")
       console.log(x, ' = green');
       aArr[i] = 0
@@ -197,15 +198,16 @@ function compareLetters(guess, answer){
 
   // yellow letters: in the word, not in the right place
   for (let i = 0; i < gArr.length; i++){
+    let r = currentRow
     let idx = aArr.findIndex(function(el){
       return (el !== 0 && el === gArr[i])
     })
     if (idx !== -1) {
       aArr[idx] = 0
       // board
-      setTimeout(() => {rowEls[currentRow].children[i].classList.add("almost-right")}, i*900)
+      setTimeout(() => {rowEls[r].children[i].classList.add("almost-right")}, i*900)
       // keyboard
-      let x = rowEls[currentRow].children[i].textContent.toLowerCase()
+      let x = rowEls[r].children[i].textContent.toLowerCase()
       if (document.getElementById(x).classList.contains("right") === false){
         console.log(`${x} = 'right': ${document.getElementById(x).classList.contains("right")}`);
         document.getElementById(x).classList.add("almost-right")
@@ -215,12 +217,13 @@ function compareLetters(guess, answer){
 
   // wrong letters: keyboard only
   for(let i = 0; i < 5; i++){
-    if (rowEls[currentRow].children[i].classList.contains('right') || rowEls[currentRow].children[i].classList.contains('almost-right')) {
+    let r = currentRow
+    if (rowEls[r].children[i].classList.contains('right') || rowEls[r].children[i].classList.contains('almost-right')) {
       console.log(i, ' already green or yellow');
     }
     else {
       console.log('else: ');
-      let x = rowEls[currentRow].children[i].textContent.toLowerCase()
+      let x = rowEls[r].children[i].textContent.toLowerCase()
       console.log(x, 'should be wrong');
       if ((document.getElementById(x).classList.contains))
       document.getElementById(x).classList.add("wrong")
@@ -231,17 +234,18 @@ function compareLetters(guess, answer){
   checkWin()
   checkLoss()
   // timeout so row doesn't change during tile flip animation
-  setTimeout(() => {currentRow++}, 3601)
+  currentRow++
   currentCol = 0
   guessArr = []
 }
 
 function animateTiles(){
+  let r = currentRow
   rowEls[currentRow].children[0].classList.add('animate__animated', 'animate__flipInX')
-  setTimeout(() => {rowEls[currentRow].children[1].classList.add('animate__animated', 'animate__flipInX')}, 900)
-  setTimeout(() => {rowEls[currentRow].children[2].classList.add('animate__animated', 'animate__flipInX')}, 1800)
-  setTimeout(() => {rowEls[currentRow].children[3].classList.add('animate__animated', 'animate__flipInX')}, 2700)
-  setTimeout(() => {rowEls[currentRow].children[4].classList.add('animate__animated', 'animate__flipInX')}, 3600)
+  setTimeout(() => {rowEls[r].children[1].classList.add('animate__animated', 'animate__flipInX')}, 900)
+  setTimeout(() => {rowEls[r].children[2].classList.add('animate__animated', 'animate__flipInX')}, 1800)
+  setTimeout(() => {rowEls[r].children[3].classList.add('animate__animated', 'animate__flipInX')}, 2700)
+  setTimeout(() => {rowEls[r].children[4].classList.add('animate__animated', 'animate__flipInX')}, 3600)
 }
 
 function checkWin(){
