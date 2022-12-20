@@ -92,14 +92,17 @@ section.keyboard {
 }
 
 .letter {
-  background-color: #a4a5a6;
+  /* background-color: #a4a5a6; */
+  background: linear-gradient(-180deg, rgba(255, 255, 255, 0.707) 0%, rgba(151, 150, 150, 0.574) 100%);
+  margin: .1vmin
+
 }
 
 .keyboard div {
   display: flex;
   color: #08070e;
   border-radius: .7vmin;
-  box-shadow: #1a1a1c 3px 3px;
+  box-shadow: #1a1a1c 2px 2px;
 }
 
 .letter {

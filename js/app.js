@@ -8,7 +8,7 @@ import { checkWord } from "./words.js"
 /*---------------------------- Variables (state) ----------------------------*/
 
 let answer, guess, currentRow, currentCol, win
-
+// let time1, time2, time3, time4, winTime, timeYellow, timeGreen, timeWrong
 let guessArr = []
 let gArr = []
 let aArr = []
@@ -56,11 +56,7 @@ muteBtnEl.addEventListener('click', manageAudio)
 init()
 
 function init(){
-  // clearTimeout(time1)
-  // clearTimeout(time2)
-  // clearTimeout(time3)
-  // clearTimeout(time4)
-  // clearTimeout(winTime)
+  clearTimeouts()
   currentRow = 0
   currentCol = 0
   guessArr = []
@@ -70,6 +66,14 @@ function init(){
   clearBoard()
   render()
   console.log(answer);
+}
+
+function clearTimeouts(){
+  let id = setTimeout(() => {}, 0)
+  console.log(id);
+  for (let i = 0; i < id; i++){
+    clearTimeout(i)
+  }
 }
 
 function clearBoard(){
@@ -211,7 +215,6 @@ function greenLetters(){
       // keyboard
       let x = rowEls[r].children[i].textContent.toLowerCase()
       document.getElementById(x).classList.add("right")
-      // console.log(x, ' = green');
       aArr[i] = 0
       gArr[i] = 0
     }
@@ -256,19 +259,19 @@ function animateTiles(){
   let r = currentRow
   rowEls[currentRow].children[0].classList.add('animate__animated', 'animate__flipInX')
   playFlip()
-  let time1 = setTimeout(() => {
+  setTimeout(() => {
     rowEls[r].children[1].classList.add('animate__animated', 'animate__flipInX')
     playFlip()
   }, 900)
-  let time2 = setTimeout(() => {
+  setTimeout(() => {
     rowEls[r].children[2].classList.add('animate__animated', 'animate__flipInX')
     playFlip()
   }, 1800)
-  let time3 = setTimeout(() => {
+  setTimeout(() => {
     rowEls[r].children[3].classList.add('animate__animated', 'animate__flipInX')
     playFlip()
   }, 2700)
-  let time4 = setTimeout(() => {
+  setTimeout(() => {
     rowEls[r].children[4].classList.add('animate__animated', 'animate__flipInX')
     playFlip()
   }, 3600)
@@ -281,7 +284,7 @@ function checkWin(){
     messageEl.textContent = 'You win!   '
     win = true
     resetEl.style.display = ''
-    let winTime = setTimeout(() => {rowEls[r].classList.add('animate__animated', 'animate__flash')}, 4000)
+    setTimeout(() => {rowEls[r].classList.add('animate__animated', 'animate__flash')}, 4000)
     return
   }
 }
