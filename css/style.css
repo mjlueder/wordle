@@ -76,8 +76,8 @@ h3 {
 
 .board .row {
   display: grid;
-  grid-template-rows: repeat(1, 9vmin);
-  grid-template-columns: repeat(5, 9vmin);
+  grid-template-rows: repeat(1, 12vmin);
+  grid-template-columns: repeat(5, 12vmin);
 }
 
 
@@ -92,8 +92,7 @@ section.keyboard {
 }
 
 .letter {
-  /* background-color: #a4a5a6; */
-  background: linear-gradient(-180deg, rgba(255, 255, 255, 0.707) 0%, rgba(151, 150, 150, 0.574) 100%);
+  background-color: #a4a5a6;
   margin: .1vmin
 
 }
@@ -181,3 +180,22 @@ button {
 }
 
 
+@media only screen and (min-width: 800px){
+  .board .row {
+    display: grid;
+    grid-template-rows: repeat(1, 9vmin);
+    grid-template-columns: repeat(5, 9vmin);
+  }
+  .letter {
+    width: 6vmin;
+    height: 6vmin;
+  }
+  #enter, #delete {
+    border: var(--border);
+    height: 6vmin;
+    width: 9vmin;
+  }
+  section.keyboard {
+    font-size: 3vmin;
+  }
+}
