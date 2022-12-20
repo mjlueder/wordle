@@ -50,6 +50,9 @@ h3 {
   justify-content: center; 
 }
 
+.row {
+  border: none;
+}
 .row div {
   /* border: 2px solid lightgray; */
   display: flex;
@@ -76,8 +79,8 @@ h3 {
 
 .board .row {
   display: grid;
-  grid-template-rows: repeat(1, 13vmin);
-  grid-template-columns: repeat(5, 13vmin);
+  grid-template-rows: repeat(1, 16vmin);
+  grid-template-columns: repeat(5, 16vmin);
 }
 
 
@@ -91,12 +94,6 @@ section.keyboard {
   font-family: sans-serif;
 }
 
-.letter {
-  background-color: #a4a5a6;
-  margin: .1vmin
-
-}
-
 .keyboard div {
   display: flex;
   color: #08070e;
@@ -106,16 +103,18 @@ section.keyboard {
 
 .letter {
   width: 9vmin;
-  height: 9vmin;
+  height: 12vmin;
   border: var(--border);
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #a4a5a6;
+  margin: .5vmin
 }
 
 #enter, #delete {
   border: var(--border);
-  height: 9vmin;
+  height: 12vmin;
   width: 14vmin;
   display: flex;
   justify-content: center;
@@ -200,6 +199,7 @@ button {
   .letter {
     width: 6vmin;
     height: 6vmin;
+    margin: .3vmin
   }
   #enter, #delete {
     border: var(--border);

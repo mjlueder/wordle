@@ -70,7 +70,7 @@ function init(){
 
 function clearTimeouts(){
   let id = setTimeout(() => {}, 0)
-  console.log(id);
+  // console.log(id);
   for (let i = 0; i < id; i++){
     clearTimeout(i)
   }
@@ -161,7 +161,7 @@ function typeLetter(evt){
     currentCol--
     rowEls[currentRow].children[currentCol].textContent = ''
     guessArr.pop()
-    console.log(guessArr);
+    // console.log(guessArr);
     return
   }
   if (evt.which < 65 || evt.which > 90) return
@@ -307,11 +307,11 @@ function manageAudio() {
   // prevent double activation via 'enter' keydown
   muteBtnEl.blur()
   if (muteBtnEl.textContent === '🔕'){
-    console.log('🔕');
+    // console.log('🔕');
     flip.volume = 0
     muteBtnEl.textContent = '🔔'
   } else if (muteBtnEl.textContent === '🔔'){
-    console.log('🔔');
+    // console.log('🔔');
     flip.volume = .2
     muteBtnEl.textContent = '🔕'
   }
