@@ -22,7 +22,7 @@ const keyboardEl = document.querySelector('.keyboard')
 const rowEls = document.querySelectorAll('.row')
 const messageEl = document.getElementById('message')
 const resetEl = document.getElementById('reset-btn')
-const muteBtnEl = document.getElementById('sound-btn')
+const muteBtnEl = document.getElementById('sound')
 
 
 
@@ -37,6 +37,7 @@ document.querySelector('body').addEventListener('keydown', typeLetter)
 keyboardEl.addEventListener('click', useKeys)
 resetEl.addEventListener('click', init)
 muteBtnEl.addEventListener('click', manageAudio)
+// console.log(muteBtnEl);
 
 /*-------------------------------- Functions --------------------------------*/
 
@@ -55,6 +56,11 @@ muteBtnEl.addEventListener('click', manageAudio)
 init()
 
 function init(){
+  // clearTimeout(time1)
+  // clearTimeout(time2)
+  // clearTimeout(time3)
+  // clearTimeout(time4)
+  // clearTimeout(winTime)
   currentRow = 0
   currentCol = 0
   guessArr = []
@@ -250,19 +256,19 @@ function animateTiles(){
   let r = currentRow
   rowEls[currentRow].children[0].classList.add('animate__animated', 'animate__flipInX')
   playFlip()
-  setTimeout(() => {
+  let time1 = setTimeout(() => {
     rowEls[r].children[1].classList.add('animate__animated', 'animate__flipInX')
     playFlip()
   }, 900)
-  setTimeout(() => {
+  let time2 = setTimeout(() => {
     rowEls[r].children[2].classList.add('animate__animated', 'animate__flipInX')
     playFlip()
   }, 1800)
-  setTimeout(() => {
+  let time3 = setTimeout(() => {
     rowEls[r].children[3].classList.add('animate__animated', 'animate__flipInX')
     playFlip()
   }, 2700)
-  setTimeout(() => {
+  let time4 = setTimeout(() => {
     rowEls[r].children[4].classList.add('animate__animated', 'animate__flipInX')
     playFlip()
   }, 3600)
@@ -275,7 +281,7 @@ function checkWin(){
     messageEl.textContent = 'You win!   '
     win = true
     resetEl.style.display = ''
-    setTimeout(() => {rowEls[r].classList.add('animate__animated', 'animate__flash')}, 4000)
+    let winTime = setTimeout(() => {rowEls[r].classList.add('animate__animated', 'animate__flash')}, 4000)
     return
   }
 }
@@ -295,6 +301,8 @@ function playFlip(){
 }
 
 function manageAudio() {
+  // prevent double activation via 'enter' keydown
+  muteBtnEl.blur()
   if (muteBtnEl.textContent === '🔕'){
     console.log('🔕');
     flip.volume = 0
