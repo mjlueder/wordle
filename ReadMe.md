@@ -10,7 +10,7 @@ Many people enjoy Wordle, but a common complaint is that it can only be played o
 
 Technologies used: JavaScript, CSS, HTML
 
-Must-Haves: App must...
+### Must-Haves: App must...
 * Render a game in the browser**. You may not use Canvas or jQuery.
 * Include win/loss logic and render win/loss messages in HTML.
 * Include separate HTML, CSS, JavaScript, and JavaScript Data files.
@@ -22,17 +22,17 @@ Must-Haves: App must...
 * Be coded using function and variable names that make sense and follow standard conventions 
 * Must use a separate data file for the word list
 
-Added Features
+### Added Features
 * Tile animations for letter reveal, wins, and non-word rejections
 * Sound effects on tile flip
 * A mute option for sound effects
 * [  Difficulty choice?  ]
 
-🧊 Icebox Items:
+### 🧊 Icebox Items:
 * Light/Dark Mode
 
 
-Attributions:
+### Attributions:
 * Tile animations: [Animate.style](https://animate.style/)
 * DM Serif Display: [Google Fonts](https://fonts.google.com/specimen/DM+Serif+Display?query=dm+serif)
 * Sound effect: [FreeSound](https://freesound.org/people/Cornersting/sounds/317448/)
