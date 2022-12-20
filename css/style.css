@@ -139,15 +139,27 @@ section.keyboard {
   border-color: rgb(78, 174, 61);
 }
 
+button {
+  font-family: 'DM Serif Display', serif;
+  background-color: color: #F7F9FB;
+  color: #2f2f34;
+}
+
 #reset-btn {
   margin: 0 0 1vmin 1vmin;
   height: 4vmin;
-  font-family: 'DM Serif Display', serif;
   font-size: 2.5vmin;
   padding: 0 1vmin 1vmin 1vmin;
-  color: #2f2f34;
   border-radius: 1.5vmin;
-  background-color: color: #F7F9FB;
+}
+
+#sound-btn {
+  height: 8vmin;
+  font-size: 4vmin;
+  border-radius: 1.5vmin;
+  position: fixed;
+  top: 0;
+  right: 0;
 }
 
 #display {
@@ -156,3 +168,10 @@ section.keyboard {
   justify-content: center;
   align-items: center;
 }
+
+/* #header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+} */
+

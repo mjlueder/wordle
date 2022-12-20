@@ -17,11 +17,13 @@ let aArr = []
 /*------------------------ Cached Element References ------------------------*/
 
 
-const boardEl = document.querySelector('.board')
+// const boardEl = document.querySelector('.board')
 const keyboardEl = document.querySelector('.keyboard')
 const rowEls = document.querySelectorAll('.row')
 const messageEl = document.getElementById('message')
 const resetEl = document.getElementById('reset-btn')
+const muteBtnEl = document.getElementById('sound-btn')
+
 
 
 
@@ -32,10 +34,9 @@ const resetEl = document.getElementById('reset-btn')
 // document.querySelector('body').addEventListener('keydown',(evt) =>{console.log(evt.key);})
 
 document.querySelector('body').addEventListener('keydown', typeLetter)
-
 keyboardEl.addEventListener('click', useKeys)
-
 resetEl.addEventListener('click', init)
+muteBtnEl.addEventListener('click', manageAudio)
 
 /*-------------------------------- Functions --------------------------------*/
 
@@ -48,6 +49,7 @@ resetEl.addEventListener('click', init)
 // rowEls[1].children[2].textContent = 'B'
 
 // rowEls[currentRow].children[currentCol].textContent = 'C'
+
 
 
 init()
@@ -164,16 +166,16 @@ function typeLetter(evt){
 function handleGuess(){
   guess = guessArr.join('').toLowerCase()
   
-    if (checkWord(guess) !== true) {
-      console.log('rejected');
-      messageEl.textContent = 'Not a word'
-      rowEls[currentRow].classList.add('animate__animated', 'animate__headShake')
-      // only allow 'delete'
-      rowEls[currentRow].addEventListener('animationend', () => rowEls[currentRow].classList.remove('animate__animated', 'animate__headShake'))
-      return
-    } else {
-      compareLetters(guess, answer)
-    }
+  if (checkWord(guess) !== true) {
+    console.log('rejected');
+    messageEl.textContent = 'Not a word'
+    rowEls[currentRow].classList.add('animate__animated', 'animate__headShake')
+    // only allow 'delete'
+    rowEls[currentRow].addEventListener('animationend', () => rowEls[currentRow].classList.remove('animate__animated', 'animate__headShake'))
+    return
+  } else {
+    compareLetters(guess, answer)
+  }
 }
 
 function compareLetters(guess, answer){
@@ -289,8 +291,19 @@ function checkLoss(){
 let flip = new Audio('../flip.mp3')
 
 function playFlip(){
-  flip.volume = .2
   flip.play()
+}
+
+function manageAudio() {
+  if (muteBtnEl.textContent === '🔕'){
+    console.log('🔕');
+    flip.volume = 0
+    muteBtnEl.textContent = '🔔'
+  } else if (muteBtnEl.textContent === '🔔'){
+    console.log('🔔');
+    flip.volume = .2
+    muteBtnEl.textContent = '🔕'
+  }
 }
 
 function render(){
