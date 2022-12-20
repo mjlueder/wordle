@@ -10,11 +10,22 @@ Many people enjoy Wordle, but a common complaint is that it can only be played o
 
 Technologies used: JavaScript, CSS, HTML
 
+Must-Haves / MVP
+*
+*
+*
+
+Added Features
+*
+*
+
+🧊 Icebox Items:
+* Light/Dark Mode
+
+
 Attributions:
 [Animate.style](https://animate.style/)
 [Google Fonts](https://fonts.google.com/specimen/DM+Serif+Display?query=dm+serif)
 [FreeSound](https://freesound.org/people/Cornersting/sounds/317448/)
 [VectorStock - Favicon](https://www.vectorstock.com/royalty-free-vector/logo-letter-w-blue-glowing-vector-22855325)
 
-🧊 Icebox Items:
-* Light/Dark Mode
