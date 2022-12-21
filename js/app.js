@@ -7,7 +7,7 @@ import { checkWord } from "./words.js"
 
 /*---------------------------- Variables (state) ----------------------------*/
 
-let answer, guess, currentRow, currentCol, win
+let answer, guess, currentRow, currentCol, win, answerPicked
 // let time1, time2, time3, time4, winTime, timeYellow, timeGreen, timeWrong
 let guessArr = []
 let gArr = []
@@ -56,11 +56,10 @@ levelEls.addEventListener('click', chooseLevel)
 // rowEls[currentRow].children[currentCol].textContent = 'C'
 
 
-
-
 init()
 
 function init(){
+  answerPicked = false
   clearTimeouts()
   messageEl.textContent = "Choose Game Difficulty"
   levelEls.style.display = ''
@@ -105,6 +104,7 @@ function chooseLevel(evt){
   console.log(answer);
   levelEls.style.display = 'none'
   messageEl.textContent = ''
+  answerPicked = true
 }
 
 function clearBoard(){
@@ -152,6 +152,7 @@ function clearBoard(){
 }
 
 function useKeys(evt){
+  if (answerPicked === false) return
   if (win === false ) messageEl.textContent = ''
   if (win === true) return
 
@@ -180,6 +181,7 @@ function useKeys(evt){
 }
 
 function typeLetter(evt){
+  if (answerPicked === false) return
   if (win === false ) messageEl.textContent = ''
   if (win === true) return
   // return evt.which = 13
