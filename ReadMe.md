@@ -1,17 +1,21 @@
-Screenshot
+![Wordle screenshot](./screenshot.png)
 
 # Wordle
 
 A word-based game that tasks the player with guessing a secret 5 letter word in 6 or fewer turns. Each guess tells you how close - or far - you are from the correct word.
 
-Many people enjoy Wordle, but a common complaint is that it can only be played once a day. Now it can be played as often as desired, at any degree of difficulty.
+Many people enjoy Wordle, but a common complaint is that it can only be played once a day. Now it can be played as often as desired, at any degree of difficulty!
 
 ## [Play Wordle Here!](https://mjlueder-wordle.netlify.app/)
 
-Technologies used: JavaScript, CSS, HTML
+## Technologies used
+* JavaScript
+* CSS
+* HTML
+* git
 
-### Must-Haves: App must...
-* Render a game in the browser**. You may not use Canvas or jQuery.
+### Must-Haves 💻
+* Render a game in the browser. You may not use Canvas or jQuery.
 * Include win/loss logic and render win/loss messages in HTML.
 * Include separate HTML, CSS, JavaScript, and JavaScript Data files.
 * Display a favicon.
@@ -22,7 +26,7 @@ Technologies used: JavaScript, CSS, HTML
 * Be coded using function and variable names that make sense and follow standard conventions 
 * Must use a separate data file for the word list
 
-### Added Features
+### Added Features ✨
 * Mobile-first design
 * Tile animations for letter reveal, wins, and non-word rejections
 * Sound effects on tile flip
@@ -30,7 +34,7 @@ Technologies used: JavaScript, CSS, HTML
 * User chooses difficulty level, including a "surprise me" option
 * "Play Again" feature
 
-### 🧊 Icebox Items:
+### Icebox Items 🧊 
 * Light/Dark Mode
 * Automatically generate an answer if a user starts typing before choosing a difficulty level
 
