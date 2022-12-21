@@ -158,6 +158,10 @@ button {
 
 #levels{
   margin-bottom: 1vmin;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
 }
 
 #reset-btn {
@@ -212,5 +216,13 @@ button {
   }
   section.keyboard {
     font-size: 3vmin;
+  }
+}
+
+@media only screen and (max-width: 550px){
+  #levels button{
+    height: 7vmin;
+    font-size: 4vmin;
+    padding: 0 2vmin
   }
 }
