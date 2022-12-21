@@ -103,7 +103,7 @@ function chooseLevel(evt){
   // console.log(aArr);
   console.log(answer);
   levelEls.style.display = 'none'
-  messageEl.textContent = ''
+  messageEl.textContent = 'Guess a word!'
   answerPicked = true
 }
 
@@ -149,10 +149,17 @@ function clearBoard(){
       rowEls[i].classList.remove('animate__animated', 'animate__flash')
     }
   }
+  // clear difficulty message animation
+  if (messageEl.classList.contains('animate__animated', 'animate__flash')) {
+    messageEl.classList.remove('animate__animated', 'animate__flash')
+  }
 }
 
 function useKeys(evt){
-  if (answerPicked === false) return
+  if (answerPicked === false) {
+    messageEl.classList.add('animate__animated', 'animate__flash')
+    return
+  }
   if (win === false ) messageEl.textContent = ''
   if (win === true) return
 
@@ -181,7 +188,10 @@ function useKeys(evt){
 }
 
 function typeLetter(evt){
-  if (answerPicked === false) return
+  if (answerPicked === false) {
+    messageEl.classList.add('animate__animated', 'animate__flash')
+    return
+  }
   if (win === false ) messageEl.textContent = ''
   if (win === true) return
   // return evt.which = 13

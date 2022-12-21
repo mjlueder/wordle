@@ -26,11 +26,13 @@ Technologies used: JavaScript, CSS, HTML
 * Mobile-first design
 * Tile animations for letter reveal, wins, and non-word rejections
 * Sound effects on tile flip
-* A mute option for sound effects
+* A mute button for sound effects
 * User chooses difficulty level, including a "surprise me" option
+* "Play Again" feature
 
 ### 🧊 Icebox Items:
 * Light/Dark Mode
+* Automatically generate an answer if a user starts typing before choosing a difficulty level
 
 
 ### Attributions:
