@@ -164,6 +164,10 @@ button {
   align-items: center;
 }
 
+#levels button {
+  margin: 0 .25vmin;
+}
+
 #reset-btn {
   margin: 0 0 1vmin 1vmin;
 }
@@ -223,6 +227,7 @@ button {
   #levels button{
     height: 7vmin;
     font-size: 4vmin;
-    padding: 0 2vmin
+    padding: 0 2vmin;
+    margin: .25vmin;
   }
 }
