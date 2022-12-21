@@ -281,10 +281,12 @@ function checkWin(){
   let r = currentRow
   if (guess === answer) {
     // console.log('win!');
-    messageEl.textContent = 'You win!   '
-    win = true
-    resetEl.style.display = ''
-    setTimeout(() => {rowEls[r].classList.add('animate__animated', 'animate__flash')}, 4000)
+    setTimeout(() => {
+      messageEl.textContent = 'You win!   '
+      win = true
+      resetEl.style.display = ''
+      rowEls[r].classList.add('animate__animated', 'animate__flash')
+    }, 4000)
     return
   }
 }
