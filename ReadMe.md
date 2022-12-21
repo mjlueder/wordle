@@ -2,7 +2,7 @@
 
 # Wordle
 
-A word-based game that tasks the player with guessing a secret 5 letter word in 6 or fewer turns. Each guess tells you how close - or far - you are from the correct word.
+A word-based game that tasks players with guessing a secret 5 letter word in 6 or fewer turns. Each guess tells you how close - or far - you are from the correct word.
 
 Many people enjoy Wordle, but a common complaint is that it can only be played once a day. Now it can be played as often as desired, at any degree of difficulty!
 
@@ -35,8 +35,8 @@ Many people enjoy Wordle, but a common complaint is that it can only be played o
 * "Play Again" feature
 
 ### Icebox Items 🧊 
-* Light/Dark Mode
-* Automatically generate an answer if a user starts typing before choosing a difficulty level
+- [ ] Light/Dark Mode
+- [ ] Automatically generate an answer if a user starts typing before choosing a difficulty level
 
 
 ### Attributions:
