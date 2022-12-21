@@ -280,10 +280,9 @@ function animateTiles(){
 function checkWin(){
   let r = currentRow
   if (guess === answer) {
-    // console.log('win!');
+    win = true
     setTimeout(() => {
       messageEl.textContent = 'You win!   '
-      win = true
       resetEl.style.display = ''
       rowEls[r].classList.add('animate__animated', 'animate__flash')
     }, 4000)
