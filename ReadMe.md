@@ -23,10 +23,11 @@ Technologies used: JavaScript, CSS, HTML
 * Must use a separate data file for the word list
 
 ### Added Features
+* Mobile-first design
 * Tile animations for letter reveal, wins, and non-word rejections
 * Sound effects on tile flip
 * A mute option for sound effects
-* [  Difficulty choice?  ]
+* User chooses difficulty level, including a "surprise me" option
 
 ### 🧊 Icebox Items:
 * Light/Dark Mode

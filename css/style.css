@@ -177,6 +177,7 @@ button {
   position: fixed;
   top: 0;
   padding: 2vmin;
+  height: 8vmin;
   right: 0;
   background-color: transparent;
   border-radius: 2vmin;

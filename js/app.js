@@ -55,7 +55,7 @@ levelEls.addEventListener('click', chooseLevel)
 
 // rowEls[currentRow].children[currentCol].textContent = 'C'
 
-console.log(Math.floor(Math.random() * 5 + 1))
+
 
 
 init()
@@ -72,7 +72,6 @@ function init(){
   // aArr = answer.split('')
   clearBoard()
   render()
-  console.log(answer);
 }
 
 function clearTimeouts(){
@@ -84,11 +83,11 @@ function clearTimeouts(){
 }
 
 function chooseLevel(evt){
-  console.log(evt.target.id)
+  // console.log(evt.target.id)
   if (evt.target.id === 'levels') return
   if (evt.target.id === 'surprise'){
     let x = Math.floor(Math.random() * 5 + 1)
-    console.log(x);
+    // console.log(x);
     answer = getWord(x)
     // aArr = answer.split('')
     // levelEls.style.display = 'none'
@@ -97,12 +96,12 @@ function chooseLevel(evt){
     // return
   } else {
     let x = parseInt(evt.target.id[0])
-    console.log(x);
+    // console.log(x);
     answer = getWord(x)
     // console.log(answer);
   }
   aArr = answer.split('')
-  console.log(aArr);
+  // console.log(aArr);
   console.log(answer);
   levelEls.style.display = 'none'
   messageEl.textContent = ''
