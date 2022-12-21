@@ -36,6 +36,7 @@ Many people enjoy Wordle, but a common complaint is that it can only be played o
 
 ### Icebox Items 🧊 
 - [ ] Light/Dark Mode
+- [ ] Create an instruction page for players new to Wordle
 - [ ] Automatically generate an answer if a user starts typing before choosing a difficulty level
 
 
