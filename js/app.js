@@ -341,7 +341,7 @@ function checkLoss(){
   }
 }
 
-let flip = new Audio('../flip.mp3')
+let flip = new Audio('../assets/flip.mp3')
 
 function playFlip(){
   flip.play()

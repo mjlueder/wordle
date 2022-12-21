@@ -1,4 +1,4 @@
-![Wordle screenshot](./screenshot.png)
+![Wordle screenshot](./assets/screenshot.png)
 
 # Wordle
 
