@@ -23,9 +23,13 @@ const rowEls = document.querySelectorAll('.row')
 const messageEl = document.getElementById('message')
 const resetEl = document.getElementById('reset-btn')
 const muteBtnEl = document.getElementById('sound')
-
-
-
+// const easyEl = document.getElementById('easy')
+// const mediumEl = document.getElementById('medium')
+// const hardEl = document.getElementById('hard')
+// const reallyHardEl = document.getElementById('really-hard')
+// const insaneEl = document.getElementById('insane')
+// const surpriseEl = document.getElementById('surprise')
+const levelEls = document.getElementById('levels')
 
 /*----------------------------- Event Listeners -----------------------------*/
 
@@ -37,7 +41,7 @@ document.querySelector('body').addEventListener('keydown', typeLetter)
 keyboardEl.addEventListener('click', useKeys)
 resetEl.addEventListener('click', init)
 muteBtnEl.addEventListener('click', manageAudio)
-// console.log(muteBtnEl);
+levelEls.addEventListener('click', chooseLevel)
 
 /*-------------------------------- Functions --------------------------------*/
 
@@ -51,18 +55,21 @@ muteBtnEl.addEventListener('click', manageAudio)
 
 // rowEls[currentRow].children[currentCol].textContent = 'C'
 
+console.log(Math.floor(Math.random() * 5 + 1))
 
 
 init()
 
 function init(){
   clearTimeouts()
+  messageEl.textContent = "Choose Game Difficulty"
+  levelEls.style.display = ''
   currentRow = 0
   currentCol = 0
   guessArr = []
   win = false
-  answer = getWord(1)
-  aArr = answer.split('')
+  // answer = getWord(1)
+  // aArr = answer.split('')
   clearBoard()
   render()
   console.log(answer);
@@ -76,9 +83,34 @@ function clearTimeouts(){
   }
 }
 
+function chooseLevel(evt){
+  console.log(evt.target.id)
+  if (evt.target.id === 'levels') return
+  if (evt.target.id === 'surprise'){
+    let x = Math.floor(Math.random() * 5 + 1)
+    console.log(x);
+    answer = getWord(x)
+    // aArr = answer.split('')
+    // levelEls.style.display = 'none'
+    // console.log(x);
+    // console.log(answer);
+    // return
+  } else {
+    let x = parseInt(evt.target.id[0])
+    console.log(x);
+    answer = getWord(x)
+    // console.log(answer);
+  }
+  aArr = answer.split('')
+  console.log(aArr);
+  console.log(answer);
+  levelEls.style.display = 'none'
+  messageEl.textContent = ''
+}
+
 function clearBoard(){
   resetEl.style.display = 'none'
-  messageEl.textContent = ''
+  // messageEl.textContent = ''
   // clear board classes
   for (let r = 0; r < 6; r++){
     for (let c = 0; c < 5; c++){

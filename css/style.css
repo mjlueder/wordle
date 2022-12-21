@@ -150,14 +150,18 @@ button {
   font-family: 'DM Serif Display', serif;
   background-color: color: #F7F9FB;
   color: #2f2f34;
+  height: 4vmin;
+  font-size: 2.5vmin;
+  border-radius: 1.5vmin;
+  padding: 0 1vmin 1vmin 1vmin;
+}
+
+#levels{
+  margin-bottom: 1vmin;
 }
 
 #reset-btn {
   margin: 0 0 1vmin 1vmin;
-  height: 4vmin;
-  font-size: 2.5vmin;
-  padding: 0 1vmin 1vmin 1vmin;
-  border-radius: 1.5vmin;
 }
 
 #sound {
