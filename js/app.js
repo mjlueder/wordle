@@ -1,61 +1,25 @@
 /*-------------------------------- Constants --------------------------------*/
-
 import { getWord } from "./words.js"
 import { checkWord } from "./words.js"
-
-// console.log(getWord(1));
-
 /*---------------------------- Variables (state) ----------------------------*/
-
 let answer, guess, currentRow, currentCol, win, answerPicked
-// let time1, time2, time3, time4, winTime, timeYellow, timeGreen, timeWrong
 let guessArr = []
 let gArr = []
 let aArr = []
-
-
 /*------------------------ Cached Element References ------------------------*/
-
-
-// const boardEl = document.querySelector('.board')
 const keyboardEl = document.querySelector('.keyboard')
 const rowEls = document.querySelectorAll('.row')
 const messageEl = document.getElementById('message')
 const resetEl = document.getElementById('reset-btn')
 const muteBtnEl = document.getElementById('sound')
-// const easyEl = document.getElementById('easy')
-// const mediumEl = document.getElementById('medium')
-// const hardEl = document.getElementById('hard')
-// const reallyHardEl = document.getElementById('really-hard')
-// const insaneEl = document.getElementById('insane')
-// const surpriseEl = document.getElementById('surprise')
 const levelEls = document.getElementById('levels')
-
 /*----------------------------- Event Listeners -----------------------------*/
-
-// submitBtnEl.addEventListener('click', submit)
-
-// document.querySelector('body').addEventListener('keydown',(evt) =>{console.log(evt.key);})
-
 document.querySelector('body').addEventListener('keydown', typeLetter)
 keyboardEl.addEventListener('click', useKeys)
 resetEl.addEventListener('click', init)
 muteBtnEl.addEventListener('click', manageAudio)
 levelEls.addEventListener('click', chooseLevel)
-
 /*-------------------------------- Functions --------------------------------*/
-
-// console.log(rowEls)
-// console.log(rowEls[0]);
-// console.log(rowEls[0].children);
-// console.log(rowEls[0].children[0]);
-
-// rowEls[0].children[0].textContent = 'A'
-// rowEls[1].children[2].textContent = 'B'
-
-// rowEls[currentRow].children[currentCol].textContent = 'C'
-
-
 init()
 
 function init(){
@@ -67,50 +31,35 @@ function init(){
   currentCol = 0
   guessArr = []
   win = false
-  // answer = getWord(1)
-  // aArr = answer.split('')
   clearBoard()
-  render()
 }
 
 function clearTimeouts(){
   let id = setTimeout(() => {}, 0)
-  // console.log(id);
   for (let i = 0; i < id; i++){
     clearTimeout(i)
   }
 }
 
 function chooseLevel(evt){
-  // console.log(evt.target.id)
   if (evt.target.id === 'levels') return
   if (evt.target.id === 'surprise'){
     let x = Math.floor(Math.random() * 5 + 1)
-    // console.log(x);
     answer = getWord(x)
-    // aArr = answer.split('')
-    // levelEls.style.display = 'none'
-    // console.log(x);
-    // console.log(answer);
-    // return
   } else {
     let x = parseInt(evt.target.id[0])
-    // console.log(x);
     answer = getWord(x)
-    // console.log(answer);
   }
   aArr = answer.split('')
-  // console.log(aArr);
   console.log(answer);
   levelEls.style.display = 'none'
-  messageEl.textContent = 'Guess a word!'
+  messageEl.textContent = 'Guess a 5-letter word!'
   answerPicked = true
 }
 
 function clearBoard(){
   resetEl.style.display = 'none'
-  // messageEl.textContent = ''
-  // clear board classes
+  // clear board tile color and animation classes
   for (let r = 0; r < 6; r++){
     for (let c = 0; c < 5; c++){
       if (rowEls[r].children[c].textContent !== ''){
@@ -130,7 +79,7 @@ function clearBoard(){
       }
     }
   }
-  // clear keyboard classes
+  // clear keyboard color class
   let alphabet = "abcdefghijklmnopqrstuvwxyz"
   for (let i = 0; i < alphabet.length; i++){
     if (document.getElementById(alphabet[i]).classList.contains('right')){
@@ -162,11 +111,9 @@ function useKeys(evt){
   }
   if (win === false ) messageEl.textContent = ''
   if (win === true) return
-
   if (currentCol === 5 && evt.target.id === 'enter') {
     handleGuess()
   }
-
   if (evt.target.id === 'delete'){
     if (currentCol === 0) return
     currentCol--
@@ -175,16 +122,11 @@ function useKeys(evt){
     console.log(guessArr);
     return
   }
-
   if (currentCol === 5) return
-  
   if (evt.target.id === 'enter' || evt.target.id === '') return
-
   rowEls[currentRow].children[currentCol].textContent = evt.target.id.toUpperCase()
-
   currentCol++
   guessArr.push(evt.target.id)
-  // console.log(guessArr);
 }
 
 function typeLetter(evt){
@@ -194,8 +136,7 @@ function typeLetter(evt){
   }
   if (win === false ) messageEl.textContent = ''
   if (win === true) return
-  // return evt.which = 13
-  // delete evt.which = 8
+  // return evt.which = 13, delete evt.which = 8
   if (currentCol === 5 && evt.which === 13) {
     handleGuess()
   }
@@ -204,26 +145,20 @@ function typeLetter(evt){
     currentCol--
     rowEls[currentRow].children[currentCol].textContent = ''
     guessArr.pop()
-    // console.log(guessArr);
     return
   }
   if (evt.which < 65 || evt.which > 90) return
   if (currentCol === 5) return
-  // console.log(evt.key);
   rowEls[currentRow].children[currentCol].textContent = evt.key.toUpperCase()
   currentCol++
   guessArr.push(evt.key)
-  // console.log(guessArr);
 }
 
 function handleGuess(){
   guess = guessArr.join('').toLowerCase()
-  
   if (checkWord(guess) !== true) {
-    console.log('rejected');
     messageEl.textContent = 'Not a word'
     rowEls[currentRow].classList.add('animate__animated', 'animate__headShake')
-    // only allow 'delete'
     rowEls[currentRow].addEventListener('animationend', () => rowEls[currentRow].classList.remove('animate__animated', 'animate__headShake'))
     return
   } else {
@@ -253,7 +188,7 @@ function greenLetters(){
   for (let i = 0; i < gArr.length; i++){
     let r = currentRow
     if (gArr[i] === aArr[i]) {
-      //board
+      // board
       setTimeout(() => {rowEls[r].children[i].classList.add("right")}, i*900)
       // keyboard
       let x = rowEls[r].children[i].textContent.toLowerCase()
@@ -287,7 +222,6 @@ function wrongLetters(){
   for(let i = 0; i < 5; i++){
     let r = currentRow
     if (rowEls[r].children[i].classList.contains('right') || rowEls[r].children[i].classList.contains('almost-right')) {
-      // console.log(i, ' already green or yellow');
     }
     else {
       setTimeout(() => {rowEls[r].children[i].classList.add('wrong-tile')}, i*900)
@@ -351,16 +285,10 @@ function manageAudio() {
   // prevent double activation via 'enter' keydown
   muteBtnEl.blur()
   if (muteBtnEl.textContent === '🔕'){
-    // console.log('🔕');
     flip.volume = 0
     muteBtnEl.textContent = '🔔'
   } else if (muteBtnEl.textContent === '🔔'){
-    // console.log('🔔');
-    flip.volume = .2
+    flip.volume = .25
     muteBtnEl.textContent = '🔕'
   }
-}
-
-function render(){
-
 }

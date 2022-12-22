@@ -53,6 +53,7 @@ h3 {
 .row {
   border: none;
 }
+
 .row div {
   /* border: 2px solid lightgray; */
   display: flex;

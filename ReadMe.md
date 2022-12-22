@@ -9,7 +9,7 @@ Many people enjoy Wordle, but a common complaint is that it can only be played o
 ## [Play Wordle Here!](https://mjlueder-wordle.netlify.app/)
 
 ## Technologies used
-* JavaScript
+* JavaScript ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
 * CSS
 * HTML
 * git
@@ -36,9 +36,13 @@ Many people enjoy Wordle, but a common complaint is that it can only be played o
 
 ### Icebox Items 🧊 
 - [ ] Light/Dark Mode
+- [ ] Score tracker
 - [ ] Create an instruction page for players new to Wordle
 - [ ] Automatically generate an answer if a user starts typing before choosing a difficulty level
 
+### Known Issues 🔧
+* Sound inconsistent on some devices/browsers
+* Keyboard keys change color before tile color is revealed
 
 ### Attributions:
 * Tile animations: [Animate.style](https://animate.style/)
