@@ -33,7 +33,7 @@ Many people enjoy Wordle, but a common complaint is that it can only be played o
 * Tile animations for letter reveal, wins, and non-word rejections
 * Sound effects on tile flip
 * A mute button for sound effects
-* User chooses difficulty level, including a "surprise me" option
+* User can choose a difficulty level, including a "surprise me" option
 * "Play Again" feature
 
 ### Icebox Items 🧊 

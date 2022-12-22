@@ -284,11 +284,11 @@ function playFlip(){
 function manageAudio() {
   // prevent double activation via 'enter' keydown
   muteBtnEl.blur()
-  if (muteBtnEl.textContent === '🔕'){
+  if (muteBtnEl.textContent === '🔔'){
     flip.volume = 0
-    muteBtnEl.textContent = '🔔'
-  } else if (muteBtnEl.textContent === '🔔'){
-    flip.volume = .25
     muteBtnEl.textContent = '🔕'
+  } else if (muteBtnEl.textContent === '🔕'){
+    flip.volume = .25
+    muteBtnEl.textContent = '🔔'
   }
 }
