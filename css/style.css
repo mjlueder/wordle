@@ -173,6 +173,13 @@ button {
   margin: 0 0 1vmin 1vmin;
 }
 
+#reset-2{
+  padding-top: .6vmin; 
+  height: 5.5vmin;
+  width: 18vmin;
+  margin-top: 1vmin;
+}
+
 #sound {
   font-size: 4vmin;
   position: fixed;
@@ -196,10 +203,10 @@ button {
 @media only screen and (min-width: 550px){
   h1 {
     font-size: 8vmin;
-    height: 8.5vmin;
+    height: 8vmin;
   }
   h3 {
-    height: 4.5vmin;
+    height: 4vmin;
     font-size: 3.5vmin;
   }
   .board .row {
@@ -222,11 +229,17 @@ button {
   }
   section.keyboard {
     font-size: 3vmin;
+    padding: 1vmin;
+  }
+  #reset-2{
+    /* padding-top: .5vmin;  */
+    /* height: 5vmin; */
+    width: 15vmin;
   }
 }
 
 @media only screen and (max-width: 550px){
-  #levels button,#reset-btn{
+  #levels button,#reset-btn,#reset-2{
     height: 7vmin;
     font-size: 4vmin;
     padding: 0 2vmin;

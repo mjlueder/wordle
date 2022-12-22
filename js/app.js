@@ -13,12 +13,14 @@ const messageEl = document.getElementById('message')
 const resetEl = document.getElementById('reset-btn')
 const muteBtnEl = document.getElementById('sound')
 const levelEls = document.getElementById('levels')
+const reset2El = document.getElementById('reset-2')
 /*----------------------------- Event Listeners -----------------------------*/
 document.querySelector('body').addEventListener('keydown', typeLetter)
 keyboardEl.addEventListener('click', useKeys)
 resetEl.addEventListener('click', init)
 muteBtnEl.addEventListener('click', manageAudio)
 levelEls.addEventListener('click', chooseLevel)
+reset2El.addEventListener('click', init)
 /*-------------------------------- Functions --------------------------------*/
 init()
 
@@ -32,6 +34,7 @@ function init(){
   guessArr = []
   win = false
   clearBoard()
+  // reset2El.style.display = ''
 }
 
 function clearTimeouts(){
@@ -54,6 +57,7 @@ function chooseLevel(evt){
   console.log(answer);
   levelEls.style.display = 'none'
   messageEl.textContent = 'Guess a 5-letter word!'
+  reset2El.style.display = ''
   answerPicked = true
 }
 
@@ -262,6 +266,7 @@ function checkWin(){
       messageEl.textContent = 'You win!   '
       resetEl.style.display = ''
       rowEls[r].classList.add('animate__animated', 'animate__flash')
+      reset2El.style.display = 'none'
     }, 4000)
     return
   }
@@ -271,6 +276,7 @@ function checkLoss(){
   if (currentRow === 5 && win === false) {
     messageEl.textContent = `The answer was ${answer.toUpperCase()}  `
     resetEl.style.display = ''
+    reset2El.style.display = 'none'
     return
   }
 }
