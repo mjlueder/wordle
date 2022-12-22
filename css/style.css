@@ -10,10 +10,8 @@ html {
 }
 
 :root{
-  /* --body-bg: #8FC1E3; */
   --border: 1px solid #2f2f34;
   --bg: #5085a5;
-  /* --txt: #687864; */
 }
 
 body {
@@ -55,13 +53,11 @@ h3 {
 }
 
 .row div {
-  /* border: 2px solid lightgray; */
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 7vmin;
   margin: .2vmin;
-  /* border-radius: .25vmin; */
 }
 
 .tile {
@@ -70,12 +66,9 @@ h3 {
 }
 
 .board {
-  /* background-color: #afb1b7; */
   font-family: sans-serif;
   border-radius: 4px;
   color: rgb(37, 36, 41);
-  /* border: #2f2f34 1px solid; */
-  /* box-shadow: #1a1a1c 3px 3px; */
 }
 
 .board .row {
@@ -232,8 +225,6 @@ button {
     padding: 1vmin;
   }
   #reset-2{
-    /* padding-top: .5vmin;  */
-    /* height: 5vmin; */
     width: 15vmin;
   }
 }

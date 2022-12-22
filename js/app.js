@@ -37,6 +37,7 @@ function init(){
   reset2El.style.display = 'none'
 }
 
+// stop animations, color changes, and sound when board resets
 function clearTimeouts(){
   let id = setTimeout(() => {}, 0)
   for (let i = 0; i < id; i++){
@@ -225,9 +226,7 @@ function yellowLetters(){
 function wrongLetters(){
   for(let i = 0; i < 5; i++){
     let r = currentRow
-    if (rowEls[r].children[i].classList.contains('right') || rowEls[r].children[i].classList.contains('almost-right')) {
-    }
-    else {
+    if ((rowEls[r].children[i].classList.contains('right') === false) && (rowEls[r].children[i].classList.contains('almost-right') === false)) {
       setTimeout(() => {rowEls[r].children[i].classList.add('wrong-tile')}, i*900)
       let x = rowEls[r].children[i].textContent.toLowerCase()
       if ((document.getElementById(x).classList.contains))
