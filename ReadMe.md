@@ -2,17 +2,19 @@
 
 # Wordle
 
-A word-based game that tasks players with guessing a secret 5 letter word in 6 or fewer turns. Each guess tells you how close - or far - you are from the correct word.
+A word-based game that tasks players with guessing a secret 5 letter word in 6 turns or fewer. Each guess tells you how close - or far - you are from the correct word.
 
 Many people enjoy Wordle, but a common complaint is that it can only be played once a day. Now it can be played as often as desired, at any degree of difficulty!
 
 ## [Play Wordle Here!](https://mjlueder-wordle.netlify.app/)
 
+[Initial Pseudocode](https://docs.google.com/document/d/1At54uKUE_zaxnbRbwbDsyeQSDajZy5GxDtSSkdS1XJ0/edit?usp=sharing)
+
 ## Technologies used
-* ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
-* ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
-* ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
-* ![Git](https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white)
+![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+![Git](https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white)
 
 ### Must-Haves 💻
 * Render a game in the browser. You may not use Canvas or jQuery.
@@ -36,7 +38,7 @@ Many people enjoy Wordle, but a common complaint is that it can only be played o
 
 ### Icebox Items 🧊 
 - [ ] Light/Dark Mode
-- [ ] Score tracker
+- [ ] Score tracker using localStorage
 - [ ] Create an instruction page for players new to Wordle
 - [ ] Automatically generate an answer if a user starts typing before choosing a difficulty level
 
@@ -49,4 +51,5 @@ Many people enjoy Wordle, but a common complaint is that it can only be played o
 * DM Serif Display: [Google Fonts](https://fonts.google.com/specimen/DM+Serif+Display?query=dm+serif)
 * Sound effect: [FreeSound](https://freesound.org/people/Cornersting/sounds/317448/)
 * Favicon: [VectorStock](https://www.vectorstock.com/royalty-free-vector/logo-letter-w-blue-glowing-vector-22855325)
+* Markdown Badges: [GitHub](https://github.com/Ileriayo/markdown-badges)
 
