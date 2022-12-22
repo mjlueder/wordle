@@ -34,7 +34,7 @@ function init(){
   guessArr = []
   win = false
   clearBoard()
-  // reset2El.style.display = ''
+  reset2El.style.display = 'none'
 }
 
 function clearTimeouts(){
