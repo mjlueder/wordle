@@ -14,6 +14,8 @@ html {
   --bg: #5085a5;
 }
 
+/* I know the CSS order isn't great, it was being touchy and once I got it working I was scared to move things. Planning to go back and re-order selectors after presentations */
+
 body {
   background: linear-gradient(to top, #081f3c 0%, #5581a2 100%);
 }
@@ -76,7 +78,6 @@ h3 {
   grid-template-rows: repeat(1, 16vmin);
   grid-template-columns: repeat(5, 16vmin);
 }
-
 
 section.keyboard {
   display: flex;
@@ -192,7 +193,6 @@ button {
   align-items: center;
 }
 
-
 @media only screen and (min-width: 550px){
   h1 {
     font-size: 8vmin;
@@ -229,6 +229,7 @@ button {
   }
 }
 
+/* I know this should be incorporated at the top! Will adjust later */
 @media only screen and (max-width: 550px){
   #levels button,#reset-btn,#reset-2{
     height: 7vmin;
