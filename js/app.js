@@ -273,7 +273,7 @@ function checkWin(){
 
 function checkLoss(){
   if (currentRow === 5 && win === false) {
-    messageEl.textContent = `The answer was ${answer.toUpperCase()}, you ignorant quitter`
+    messageEl.textContent = `The answer was ${answer.toUpperCase()}`
     resetEl.style.display = ''
     reset2El.style.display = 'none'
     return
